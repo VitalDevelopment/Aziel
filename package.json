@@ -1,0 +1,25 @@
+{
+  "name": "swift",
+  "version": "1.0.0",
+  "description": "A very epic discord bot made in discord.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node ."
+  },
+  "keywords": [
+    "discordbot",
+    "swift"
+  ],
+  "author": "BrydenIsNotSmart",
+  "license": "ISC",
+  "dependencies": {
+    "@elara-services/eval-helper": "^1.1.1",
+    "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.3",
+    "nodemon": "^2.0.20",
+    "twemoji-parser": "^14.0.0"
+  }
+}

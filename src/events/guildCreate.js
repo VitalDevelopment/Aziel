@@ -1,0 +1,16 @@
+const { Events } = require('discord.js');
+const model = global.guildModel;
+
+module.exports = {
+	name: Events.GuildCreate,
+	once: false,
+	async execute(guild, client) {
+        if(await model.findOne({ id: guild.id })) return;
+
+    await model.create({
+        id: guild.id,
+        name: guild.name,
+        icon: guild.iconURL({ dynamic: true })
+        });
+	},
+};
