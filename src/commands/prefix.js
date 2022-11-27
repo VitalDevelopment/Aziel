@@ -14,7 +14,7 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setColor("#39C6F1")
         .setTitle("<:confused:1046196237663211620> Hello World?")
-        .setDescription("You kinda just used the prefix to run the command.\nI guess it's normal human behavoir though.")
+        .setDescription("You kinda just used the prefix to run the command.\nI guess it's normal human behavior though.")
         .addFields({ name: "Server Prefix:", value: `\`\`\`${data.prefix}\`\`\`` ?? `\`\`\`${global.config.bot.prefix}\`\`\``, inline: true })
         .addFields({ name: "Default Prefix:", value: `\`\`\`${global.config.bot.prefix}\`\`\``, inline: true })
         .setFooter({
@@ -58,6 +58,18 @@ module.exports = {
             .setDescription(`<:xmark:1045967248038309970> There was an error while executing this command! \n\`\`\`js\n${err}\`\`\``)
             await message.channel.send({ embeds: [errorEmbed] });
         }
+      } else {
+        const embed = new EmbedBuilder()
+        .setColor("#39C6F1")
+        .setTitle("<:confused:1046196237663211620> Hello World?")
+        .setDescription("You kinda just used the prefix to run the command.\nI guess it's normal human behavior though.")
+        .addFields({ name: "Server Prefix:", value: `\`\`\`${data.prefix}\`\`\`` ?? `\`\`\`${global.config.bot.prefix}\`\`\``, inline: true })
+        .addFields({ name: "Default Prefix:", value: `\`\`\`${global.config.bot.prefix}\`\`\``, inline: true })
+        .setFooter({
+            text: `${client.user.username} - Prefix Management`,
+            iconURL: client.user.displayAvatarURL(),
+          });
+        return message.reply({ embeds: [embed] });
       }
     },
   };

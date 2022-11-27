@@ -6,9 +6,12 @@ module.exports = {
 	async execute(message, client) {
     const data = await global.guildModel.findOne({ id: message.guild.id });
     let prefix = data.prefix ?? global.config.bot.prefix;
-
+    const pingEmbed = new EmbedBuilder()
+    .setTitle(`:wave: Heyo, I'm ${client.user.username}!`)
+    .setColor("#39C6F1")
+    .setDescription(`My prefix for this server is **${prefix}**\nRun **${prefix}help** for a full list of my commands.`)
     if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) 
-		return message.reply("stop");
+		return message.reply({ embeds: [pingEmbed] });
 
     if (message.author.bot || !message.guild) return;
     if (!message.content.toLowerCase().startsWith(prefix)) return;
@@ -21,13 +24,14 @@ module.exports = {
     if (message.channel.permissionsFor(message.guild.members.cache.get(client.user.id)).has(PermissionsBitField.Flags.SendMessages)) {
       if (data.disabledCommands.includes(command)) {
         const embed = new EmbedBuilder()
-        .setTitle("<:xmark:1045967248038309970> Disabled Command")
+        .setTitle("<:xmark:1045967248038309970> Command Disabled")
         .setColor("#39C6F1")
         .setDescription("This command has been disabled by the server administrators.")
         .setFooter({ text: `${client.user.username} - Command Management`, iconURL: client.user.displayAvatarURL() })
        return await message.reply({ embeds: [embed] })
       }
-      cmd.run(client, message, args);
+      message.channel.sendTyping();
+      setTimeout(() => { cmd.run(client, message, args); }, 500);
     } else {
         try {
          message.author.send(`<:xmark:1045967248038309970> I don't have permission to send messages in <#${message.channel.id}>!\nPlease contact the owner to fix my permissions so I can work!`)

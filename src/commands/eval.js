@@ -11,7 +11,6 @@ module.exports = {
         .setColor("#39C6F1")
         .setDescription("**<:xmark:1045967248038309970> You must provide code to evaluate.**")
         if (!args[0]) return message.reply({ embeds: [errorEmbed] });
-
         try {
         const evaled = await getCode({ code: args.join(" ") });
         const code = await clean(eval(evaled), [ client.token ]);
@@ -29,3 +28,11 @@ module.exports = {
         } 
     },
 };
+global.isOwner = isOwner;
+function isOwner(id) {
+    if(global.config.ownerids.includes(id)) {
+      return true;
+    } else {
+     return false;
+  }
+}

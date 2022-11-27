@@ -2,7 +2,7 @@ const { EmbedBuilder, PermissionsBitField } = require('discord.js')
 
 module.exports = {
     name: "ban",
-    aliases: ["boot", "yeet"],
+    aliases: ["boot"],
     category: "Mod",
     description: "Bans a user from the guild.",
     async run(client, message, args) {
