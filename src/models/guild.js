@@ -12,6 +12,15 @@ let app = mongoose.Schema({
   icon: {
     type: String,
     required: true
+  },
+  prefix: {
+    type: String,
+    required: false
+  },
+  disabledCommands: {
+    type: Array,
+    required: true,
+    default: []
   }
 });
 module.exports = mongoose.model("guilds", app);
