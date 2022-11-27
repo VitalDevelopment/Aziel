@@ -3,6 +3,7 @@ const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
     name: "eval",
+    category: "Dev",
     description: "Evaluates Javascript code in a command.",
     async run(client, message, args) {
         if (!global.config.ownerids.includes(message.author.id)) return null; 

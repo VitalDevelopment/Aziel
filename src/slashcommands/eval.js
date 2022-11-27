@@ -11,7 +11,7 @@ module.exports = {
                 .setRequired(true))),
 	async execute(interaction, client) {
         const input = interaction.options.getString('code');
-        if (!global.config.ownerids.includes(interaction.user.id)) return message.reply({ content: "Only the developer can run this command.", ephemeral: true}); 
+        if (!global.config.ownerids.includes(interaction.user.id)) return interaction.reply({ content: "Only the developer can run this command.", ephemeral: true}); 
         try {
         const evaled = await getCode({ code: input });
         const code = await clean(eval(evaled), [ client.token ]);

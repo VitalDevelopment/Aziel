@@ -1,44 +1,36 @@
 const { EmbedBuilder, PermissionsBitField } = require('discord.js')
 
 module.exports = {
-    name: "ban",
-    aliases: ["boot", "yeet"],
+    name: "unban",
+    aliases: ["unboot"],
     category: "Mod",
-    description: "Bans a user from the guild.",
+    description: "Unbans a user from the guild.",
     async run(client, message, args) {
 
         const permissionsEmbed = new EmbedBuilder()
         .setColor("#39C6F1")
-        .setDescription("**<:xmark:1045967248038309970> You need the \"Ban Members\" permission to use this command.**");
+        .setDescription("<:xmark:1045967248038309970> You need the \"Ban Members\" permission to use this command.");
         if (!message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return message.reply({ embeds: [permissionsEmbed] });
-
-        const guild = client.guilds.cache.get(message.guild.id);
-        const user =  message.mentions.users.first() || client.users.cache.get(args[0]);
-        const reason = args.splice(1).join(" ");
         const errorEmbed = new EmbedBuilder()
        .setColor("#39C6F1")
-       .setDescription("**<:xmark:1045967248038309970> You must provide a user for me to ban.**")
-       if(!user) return message.reply({ embeds: [errorEmbed] })
+       .setDescription("<:xmark:1045967248038309970> You must provide a user id for me to unban.")
+        if(!args[0]) return message.reply({ embeds: [errorEmbed] });
+        const reason = args.splice(1).join(" ");
        const error2Embed = new EmbedBuilder()
        .setColor("#39C6F1")
-       .setDescription("**<:xmark:1045967248038309970> You must provide a reason for me to ban them.**")
+       .setDescription("<:xmark:1045967248038309970> You must provide a reason for me to unban them.")
        if(!reason) return message.reply({ embeds: [error2Embed] })
-       const member = guild.members.cache.get(user.id);
 
        try {
         if (message.channel.permissionsFor(message.guild.members.cache.get(client.user.id)).has(PermissionsBitField.Flags.BanMembers)) {
-        const errorEmbed = new EmbedBuilder()
-       .setColor("#39C6F1")
-       .setDescription("**<:xmark:1045967248038309970> My roles are too low to ban this member.**")
-        if(!member.bannable) return message.reply({embeds: [errorEmbed] });
-       await member.ban({ reason: `${reason} -> Excuted by ${message.author.tag}.` });
+       await message.guild.members.unban( args[0], `${reason} -> Excuted by ${message.author.tag}.` );
        const embed = new EmbedBuilder()
        .setColor("#39C6F1")
-       .setTitle("<:checkmark:1045963641406640148> Successfully banned")
-       .setDescription(`I have successfully banned **${user.tag}**.`)
+       .setTitle("<:checkmark:1045963641406640148> Successfully Unbanned")
+       .setDescription(`I have successfully unbanned **${user.tag}**.`)
        .addFields({ name: "Reason", value: reason, inline: true })
        .addFields({ name: "Executor", value: `${message.author}`, inline: true })
-       .setFooter({ text: `${client.user.username} - Ban Command`, iconURL: client.user.displayAvatarURL() })
+       .setFooter({ text: `${client.user.username} - Unban Command`, iconURL: client.user.displayAvatarURL() })
        return message.reply({ embeds: [embed] });
         } else {
          const errorEmbed = new EmbedBuilder()
