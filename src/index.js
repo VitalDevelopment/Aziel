@@ -4,7 +4,7 @@ const config = require("../config.js");
 global.config = config;
 
 //-Requiring other files-//
-require("./app.js");
+require("./server/app.js");
 
 //-Defining globals-//
 global.guildModel = require("./models/guild.js");

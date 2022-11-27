@@ -10,9 +10,10 @@ module.exports = {
     .setTitle(`:wave: Heyo, I'm ${client.user.username}!`)
     .setColor("#39C6F1")
     .setDescription(`My prefix for this server is **${prefix}**\nRun **${prefix}help** for a full list of my commands.`)
-    if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) 
-		return message.reply({ embeds: [pingEmbed] });
-
+    if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
+        message.channel.sendTyping();
+        setTimeout(() => {	return message.reply({ embeds: [pingEmbed] }); }, 500);
+    }
     if (message.author.bot || !message.guild) return;
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 
