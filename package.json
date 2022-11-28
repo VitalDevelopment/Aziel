@@ -5,13 +5,13 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon node ."
+    "start": "npx next dev dashboard & nodemon node ."
   },
   "keywords": [
     "discordbot",
     "swift"
   ],
-  "author": "BrydenIsNotSmart",
+  "author": "Vital Development",
   "license": "ISC",
   "dependencies": {
     "@elara-services/eval-helper": "^1.1.1",

@@ -32,7 +32,9 @@ module.exports = {
        return await message.reply({ embeds: [embed] })
       }
       message.channel.sendTyping();
-      setTimeout(() => { cmd.run(client, message, args); }, 500);
+     // setTimeout(() => { 
+        cmd.run(client, message, args); 
+      //}, 500);
     } else {
         try {
          message.author.send(`<:xmark:1045967248038309970> I don't have permission to send messages in <#${message.channel.id}>!\nPlease contact the owner to fix my permissions so I can work!`)
