@@ -10,12 +10,12 @@ require("./server/app.js");
 global.guildModel = require("./models/guild.js");
 
 //-Discord Clients-//
-const client = new Client({ 
-    allowedMentions: { 
-        parse: ["users", "roles"], repliedUser: false 
-    }, 
-    intents: [ 
-        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent 
+const client = new Client({
+    allowedMentions: {
+        parse: ["users", "roles"], repliedUser: false
+    },
+    intents: [
+        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers
     ]
 })
 client.login(config.bot.token)

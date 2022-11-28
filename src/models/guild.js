@@ -22,12 +22,21 @@ let app = mongoose.Schema({
     required: true,
     default: []
   },
-  welcomeMesasge: {
+  welcomeMessage: {
     type: String,
     required: false,
     default: "Welcome to the server {user}!"
   },
   welcomeChannel: {
+    type: String,
+    required: false,
+  },
+  leaveMessage: {
+    type: String,
+    required: false,
+    default: "{user.tag} has just left the server."
+  },
+  leaveChannel: {
     type: String,
     required: false,
   }

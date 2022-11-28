@@ -137,7 +137,7 @@ app.use('/dash', dashRouter);
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {
-        bot: req.bot,
+        bot: global.client,
         user: req.user,
         config: global.config,
     })

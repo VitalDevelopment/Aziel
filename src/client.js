@@ -39,7 +39,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 const getFiles = (path) => readdirSync(join(__dirname, path)).filter((file) => file.endsWith(".js"));
 for (const cfile of getFiles("commands")) {
-    const command = require(join(__dirname, "commands", `${cfile}`));
-    client.commands.set(command.name, command);
-    if (command.aliases) command.aliases.forEach(alias => client.aliases.set(alias, command.name));
-  }
+	const command = require(join(__dirname, "commands", `${cfile}`));
+	client.commands.set(command.name, command);
+	if (command.aliases) command.aliases.forEach(alias => client.aliases.set(alias, command.name));
+}

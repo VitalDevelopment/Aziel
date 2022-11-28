@@ -70,6 +70,8 @@ router.get('/', checkAuth, (req, res) => {
    data.prefix = req.body.prefix;
    data.welcomeMessage = req.body.welcomeMessage;
    data.welcomeChannel = req.body.welcomeChannel;
+   data.leaveMessage = req.body.leaveMessage;
+   data.leaveChannel = req.body.leaveChannel;
    await data.save().catch((e) => {
      console.log(e);
    });
