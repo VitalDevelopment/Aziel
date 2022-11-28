@@ -1,0 +1,39 @@
+<head>
+    <title>Dashboard - Aziel</title>
+    <%- include("../parts/head.ejs") %>
+</head>
+
+  <body>
+    <%- include("../parts/nav.ejs", { bot, user }) %>
+  <div class="wrapper vcenter-item" style="margin-top: 100px;">
+  <div id="home">
+    <center>
+        <span style="margin-top:-5px;font-size:40px;margin-bottom:-5px; color:white">Pick your server to edit below</span><br>
+        <span style="font-size:15px;color:white">Your servers: <%= user.guilds.length %></span>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <% user.guilds.forEach(guild => {
+                const permsOnGuild = new perms(guild.permissions_new);
+                if(!permsOnGuild.has(perms.Flags.ManageGuild)) return;
+            %>
+              <div class="card" style="max-width: 18rem; margin: 2rem; min-width: 10em;background-color: #2e323d;border-radius: 10px;">
+              <%- guild.icon ? `<img src="https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}" class="card-img-top" style="max-width: 10rem;border-radius: 50%;margin-top:25px">` : `<img src="https://mark-wesley.co.uk/i/9km.png" class="card-img-top" style="max-width: 10rem;border-radius: 50%;margin-top:25px">` %>
+                <div class="card-body">
+                  <h5 style="color: white;" class="card-title"><b><%= guild.name %></b></h5>
+                  <hr>
+                  <% if (bot.guilds.cache.get(guild.id)) { %>
+                    <a href="/dashboard/<%- guild.id %>" class="btn btn-warning text-white"><i class="fa-solid fa-gear"></i> Configure</a>
+                  <% } else { %>  
+                    <a href="<%= `https://discordapp.com/oauth2/authorize?client_id=${config.bot.clientid}&scope=bot&guild_id=${guild.id}&response_type=code&redirect_uri=${config.bot.redirect}`  %>" class="btn btn-primary text-white"><i class="fa-solid fa-plus"></i> Invite Aziel</a>
+                  <% } %>
+                </div>
+              </div>
+            <%
+                });
+            %>
+          </div>
+    </center>
+  </div>
+</div>
+  </body>
+

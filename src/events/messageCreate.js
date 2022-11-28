@@ -5,7 +5,10 @@ module.exports = {
 	once: false,
 	async execute(message, client) {
     const data = await global.guildModel.findOne({ id: message.guild.id });
-    let prefix = data.prefix ?? global.config.bot.prefix;
+    if (!data) {
+      global.guildModel.create({ id: message.guild.id, name: message.guild.name, icon: message.guild.iconURL({ dynamic: true }) ?? 'https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png' })
+    } 
+    let prefix = data.prefix || global.config.bot.prefix;
     const pingEmbed = new EmbedBuilder()
     .setTitle(`:wave: Heyo, I'm ${client.user.username}!`)
     .setColor("#39C6F1")

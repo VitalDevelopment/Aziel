@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark dark">
+    <a class="navbar-brand" href="/"><img draggable="false" src="/image/aziel.png" style="height: 50px; width: 50px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="fa-solid fa-house-chimney"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/commands"><i class="fa-solid fa-code"></i>&nbsp;Commands</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/invite"><i class="fa-solid fa-plus"></i>&nbsp;Invite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/discord"><i class="fa-brands fa-discord"></i>&nbsp;Support</a>
+        </li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if (user) { %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle pl-3 pr-3 mr-3 btn btn-primary" style="border-radius: 8px;margin-top:4px;background-color: transparent;border-color: transparent;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="right" draggable="false" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png?" width="35" height="35" style="border-radius:100%;" />&nbsp;&nbsp;<%= user.username %>#<%= user.discriminator %></a>
+          <div class="dropdown-menu" style="background-color: #2e323d;border-radius: 8px">
+            <a class="dropdown-item" style="color: white;" href="/dashboard"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Dashboard</a>
+            <a class="dropdown-item" style="color: white;" href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</a>
+            <% if(config.staff.includes(user.id)) { %>
+            <div class="dropdown-divider"></div>
+            <a style="color: white;" class="dropdown-item" href="/panel"><i class="fa fa-bars mr-1"></i>Staff Panel</a>
+            <% } %>
+          </div>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a href="/auth/login" style="border-radius: 5px;margin-top:3px; background-color: #c1234f;border-color: #c1234f;"  class="btn btn-primary pl-3 pr-3 mr-3"><i class="fa-solid fa-sign-in-alt"></i>&nbsp;&nbsp;Login via Discord</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <hr>
+  </nav>
+  

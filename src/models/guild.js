@@ -21,6 +21,15 @@ let app = mongoose.Schema({
     type: Array,
     required: true,
     default: []
+  },
+  welcomeMesasge: {
+    type: String,
+    required: false,
+    default: "Welcome to the server {user}!"
+  },
+  welcomeChannel: {
+    type: String,
+    required: false,
   }
 });
 module.exports = mongoose.model("guilds", app);

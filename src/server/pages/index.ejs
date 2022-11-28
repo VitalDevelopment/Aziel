@@ -1,5 +1,40 @@
 <head>
     <title>Home - Aziel</title>
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
     <%- include("./parts/head.ejs") %>
 </head>
-<h1>Hello World</h1>
+
+  <body>
+    <%- include("./parts/nav.ejs", { bot, user }) %>
+  <div class="wrapper vcenter-item" style="margin-top: 100px;">
+  <div id="home">
+    <p class="text-center talign;" style="color:white"><img src="/image/aziel.png" class="cooolimg" style="width: 150px; height: 150px;"><br>
+        <span style="margin-top:-5px;font-size:40px;margin-bottom:-5px;color:white">Aziel</span><br>
+        <span class="typing_desc" style="color:white"></span>
+            <script>
+                new TypeIt(".typing_desc", {
+                    speed: 90,
+                    waitUntilVisible: true,
+                    startDelay: 1000,
+                  })
+                  .type("A multipurpose Discord bot for your server.")
+                  .pause(10000)
+                  .delete(-13)
+                  .type(' all of your needs.')
+                  .go()
+              </script>
+      <br><br>
+    <a href="/invite" type="button" style="background-color: #c1234f;border-color: #c1234f;" class="btn btn-primary"><i class="fas fa-plus"></i> Invite</a>
+    <a href="/dashboard" type="button" style="background-color: #2e323d;border-color: #2e323d;" class="btn btn-primary"><i class="fas fa-gear"></i> Dashboard</a></p><br><br><br><br>
+    <p class="text-center talign;" style="color:white">
+    <span style="font-size: 35;">Moderation Commands</span><br>
+      <img src="https://mark-wesley.co.uk/i/r7Y.png"><br><br></p>
+      <hr>
+      <p class="text-center talign;" style="color:white">
+      <span style="font-size: 35;">Fun Commands</span><br>
+      <img src="https://mark-wesley.co.uk/i/jjR.png">
+    </p>
+  </div>
+</div>
+  </body>
+

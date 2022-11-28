@@ -1,0 +1,45 @@
+<head>
+    <title>Configuring <%- guild.name %> - Aziel</title>
+    <%- include("../parts/head.ejs") %>
+</head>
+
+  <body>
+    <%- include("../parts/nav.ejs", { bot, user }) %>
+    <div class="wrapper vcenter-item" style="margin-top: 100px;">
+        <div id="home">
+<div class="container-sm center">
+      <% if (alert) { %>
+        <div class="alert alert-success" role="alert">
+          <%= alert %>
+        </div>
+      <% } %><br>
+      <%- guild.icon ? `<p class="text-center talign"><img src="https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}" style="width: 150px; height: 150px;border-radius: 50%;"></p>` : `<p class="text-center talign"><img src="https://mark-wesley.co.uk/i/9km.png" style="width: 150px; height: 150px;border-radius: 50%;">` %></p>
+        <h2 class="text-center talign" style="color:white;margin-top: -15px;"><%= guild.name %></h2><br><br>
+        <h1 style="color: white">Basic Settings</h1>
+      <hr>
+      <form action="/dashboard/<%= guild.id %>" method="POST">
+        <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i class="fa-solid fa-terminal"></i> Prefix:</p>
+        <input type="text" class="form-control" name="prefix" value="<%= settings.prefix %>" placeholder="Enter prefix."><br>
+        <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i class="fa-solid fa-pen"></i> Nickname:</p>
+        <input type="text" class="form-control" name="nickname" value="<%= settings.nickname ?? global.config.bot.prefix %>" placeholder="Enter name.">
+        <br><br>
+        <h1 style="color: white">Welcome & Leave Messages</h1>
+      <hr>
+      <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i class="fa-solid fa-message"></i> Welcome Message:</p>
+      <input type="text" class="form-control" name="welcomeMessage" value="<%= settings.welcomeMessage %>" placeholder="Enter welcome message."><br>
+      <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i class="fa-solid fa-message"></i> Welcome Channel:</p>
+      <select name="welcomeChannel" id="welcomeChannel" class="form-control" placeholder="Select a welcome channel." required>
+        <% guild.channels.cache.forEach(channel => { %>
+            <% if (channel.type === type.GuildText) { %>
+                <% if (channel.id === settings.welcomeChannel) { %>
+             <option selected value="<%= channel.id %>"><%= channel.name %></option>
+                    <% } else %>
+             <option value="<%= channel.id %>"><%= channel.name %></option>
+             <% } %>
+        <% }); %>
+      </select>
+        <br><button type="submit" class="btn btn-success text-white"><i class="fa-solid fa-floppy-disk"></i> Save Settings</button>
+      </form>
+    </div>
+  </div>
+

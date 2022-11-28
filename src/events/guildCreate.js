@@ -10,7 +10,7 @@ module.exports = {
     await model.create({
         id: guild.id,
         name: guild.name,
-        icon: guild.iconURL({ dynamic: true })
+        icon: guild.iconURL({ dynamic: true }) ?? 'https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png'
         });
 	},
 };
