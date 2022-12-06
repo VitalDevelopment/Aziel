@@ -13,6 +13,8 @@ module.exports = {
         .setColor("#39C6F1")
         .setDescription("<:xmark:1045967248038309970> You must provide a user to play against.")
       if (!user) return message.reply({ embeds: [errorEmbed] })
+      if(user === message.author) return message.reply("You played yourself, wait you can't.");
+      if(user.bot) return message.reply("You cannot play a bot, you would get destroyed.");
 
       const Game = new TicTacToe({
         message: message,

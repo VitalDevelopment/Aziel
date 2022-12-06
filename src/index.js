@@ -15,7 +15,7 @@ const client = new Client({
         parse: ["users", "roles"], repliedUser: false
     },
     intents: [
-        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers
+        GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences,
     ]
 })
 client.login(config.bot.token)

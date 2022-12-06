@@ -14,16 +14,13 @@ module.exports = {
     const errorEmbed = new EmbedBuilder()
       .setColor("#39C6F1")
       .setDescription("<:xmark:1045967248038309970> You must provide a user id for me to unban.")
-    if (!args[0]) return message.reply({ embeds: [errorEmbed] });
-    const reason = args.splice(1).join(" ");
-    const error2Embed = new EmbedBuilder()
-      .setColor("#39C6F1")
-      .setDescription("<:xmark:1045967248038309970> You must provide a reason for me to unban them.")
-    if (!reason) return message.reply({ embeds: [error2Embed] })
-
+    const user = await client.users.fetch(args[0]);
+    if (!user) return message.reply({ embeds: [errorEmbed] });
+    const reason = args.splice(1).join(" ") || "No reason provided."
+    console.log(user)
     try {
       if (message.channel.permissionsFor(message.guild.members.cache.get(client.user.id)).has(PermissionsBitField.Flags.BanMembers)) {
-        await message.guild.members.unban(args[0], `${reason} -> Excuted by ${message.author.tag}.`);
+        await message.guild.members.unban(user.id, `${reason} -> Excuted by ${message.author.tag}.`);
         const embed = new EmbedBuilder()
           .setColor("#39C6F1")
           .setTitle("<:checkmark:1045963641406640148> Successfully Unbanned")

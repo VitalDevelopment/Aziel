@@ -30,10 +30,9 @@
           <a href="/dashboard" type="button" style="background-color: #2e323d;border-color: #2e323d;"
             class="btn btn-primary"><i class="fas fa-gear"></i> Dashboard</a>
         </p>
-        <h2 class="text-center talign;" style="color:white;margin-top: 150px;"> Bot Statistics</h2>
-        <p class="text-center talign;" style="color:white">Serving over <%- bot.guilds.cache.size %> guilds, with <%- bot.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c); %> users, and <%- bot.channels.cache.size %> channels.</p>
-        <h2 class="text-center talign;" style="color:white;margin-top: 150px;"><b>Bot Features</b></h2>
-        <p class="text-center talign;" style="color:white;">All of the features & commands of the bot.</p><br><br>
+    
+        <h2 class="text-center talign;" style="color:white;margin-top: 150px;"> <b>Bot Features</b></h2>
+        <p class="text-center talign;" style="color:white;">All of the features & commands of the bot.</p><br>
         <p class="text-center talign;" style="color:white;margin-left: -1000px">
           <span style="font-size: 25;">Moderation Commands</span><br>
           <img style="border-radius: 10px;" src="https://mark-wesley.co.uk/i/r7Y.png"><br><br>
@@ -47,6 +46,8 @@
           <span style="font-size: 25;">Quiz Commands</span><br>
           <img style="border-radius: 10px;" src="https://mark-wesley.co.uk/i/Ryp.png">
         </p>
+        <h2 class="text-center talign;" style="color:white;margin-top: 150px;"> <b>Bot Statistics</b></h2>
+        <p class="text-center talign;" style="color:white">Serving over <%- bot.guilds.cache.size %> guilds, with <%- bot.guilds.cache.map((guild) => guild.memberCount).reduce((p, c) => p + c); %> users, and <%- bot.channels.cache.size %> channels.</p>
       </div>
     </div>
 </body>

@@ -16,7 +16,7 @@ module.exports = {
 	.replace("{user.username}", `${member.user.username}`)
 	.replace("{user.tag}", `${member.user.tag}`)
 	.replace("{guild.name}", `${member.guild.name}`)
-	.replace("{guild.member_count}", `${meber.guild.memberCount}`)
+	.replace("{guild.member_count}", `${member.guild.memberCount}`)
 	return await channel.send(message);
 	},
 };
