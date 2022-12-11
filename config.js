@@ -5,6 +5,7 @@ module.exports = {
   mongo: process.env.mongo,
   ownerids: ["529815278456930314", "700609775838298113"],
   staff: ["529815278456930314", "700609775838298113"],
+  vlAPIKEY: "RkVoB2CjeyOjCputjxfz",
   bot: {
     prefix: "a!", // also slash commands
     clientid: "829896567963910164",

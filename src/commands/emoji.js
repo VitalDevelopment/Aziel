@@ -10,8 +10,12 @@ module.exports = {
 
         const permissionsEmbed = new EmbedBuilder()
             .setColor("#39C6F1")
-            .setDescription("**<:xmark:1045967248038309970> You need the \"Manage Emojis\" permission to use this command.**");
+            .setDescription("<:xmark:1045967248038309970> You need the \"Manage Emojis\" permission to use this command.");
+            const permissionsForMeEmbed = new EmbedBuilder()
+            .setColor("#39C6F1")
+            .setDescription("<:xmark:1045967248038309970> I need the \"Manage Emojis\" permission to do this.");
         if (!message.member.permissions.has(PermissionsBitField.Flags.ManageEmojisAndStickers)) return message.reply({ embeds: [permissionsEmbed] });
+        if (!message.guild.members.cache.get(client.user.id).permissions.has(PermissionsBitField.Flags.ManageEmojisAndStickers)) return message.reply({ embeds: [permissionsForMeEmbed] });
         if (!args.length) return message.reply("<:xmark:1045967248038309970> Please provide some emojis!")
         try {
             const array = [];
@@ -27,7 +31,7 @@ module.exports = {
                             const embed = new EmbedBuilder()
                                 .setColor("#39C6F1")
                                 .setDescription(`<:checkmark:1045963641406640148> Successfully added: ${emoji}`)
-                            return message.reply({ embeds: [embed] })
+                            return message.channel.send({ embeds: [embed] })
                         })
                 }
             }

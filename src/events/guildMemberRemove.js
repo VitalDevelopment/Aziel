@@ -8,6 +8,7 @@ module.exports = {
 		const data = await model.findOne({ id: member.guild.id });
 		if (!data) return;
 		if (!data.leaveChannel) return;
+		if(data.welcomeAndLeave === false) return;
 		const channel = client.channels.resolve(data.leaveChannel);
 		let message = data.leaveMessage;
 

@@ -8,7 +8,7 @@ module.exports = {
     if (!data) {
       global.guildModel.create({ id: message.guild.id, name: message.guild.name, icon: message.guild.iconURL({ dynamic: true }) ?? 'https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png' })
     }
-    let prefix = data.prefix || global.config.bot.prefix;
+    let prefix = data.prefix ?? global.config.bot.prefix;
     const pingEmbed = new EmbedBuilder()
       .setTitle(`:wave: Heyo, I'm ${client.user.username}!`)
       .setColor("#39C6F1")
@@ -35,9 +35,9 @@ module.exports = {
           return await message.reply({ embeds: [embed] })
         }
         message.channel.sendTyping();
-        // setTimeout(() => { 
-        cmd.run(client, message, args);
-        //}, 500);
+         setTimeout(() => { 
+        cmd.run(client, message, args)
+        }, 500);
       } else {
         try {
           message.author.send(`<:xmark:1045967248038309970> I don't have permission to send messages in <#${message.channel.id}>!\nPlease contact the owner to fix my permissions so I can work!`)

@@ -1,4 +1,5 @@
 const { Events, ActivityType } = require('discord.js');
+const vitallist = require('vitallist.js');
 
 module.exports = {
 	name: Events.ClientReady,

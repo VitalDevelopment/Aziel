@@ -10,11 +10,16 @@ module.exports = {
         .setDescription("The member you want to play against.")
         .setRequired(true)),
   async execute(interaction, client) {
+    let user = interaction.options.getUser('opponent')
+
+    if(user === interaction.user) return interaction.reply("You played yourself, wait you can't.");
+      if(user.bot) return interaction.reply("You cannot play a bot, you would get destroyed.");
+
     try {
       const Game = new RockPaperScissors({
         message: interaction,
         isSlashGame: true,
-        opponent: interaction.options.getUser('opponent'),
+        opponent: user,
         embed: {
           title: 'Rock Paper Scissors',
           color: '#39C6F1',

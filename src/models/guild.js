@@ -17,6 +17,11 @@ let app = mongoose.Schema({
     type: String,
     required: false
   },
+  welcomeAndLeave: {
+    type: Boolean,
+    required: false,
+    default: false
+  },
   disabledCommands: {
     type: Array,
     required: true,
