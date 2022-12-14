@@ -1,0 +1,53 @@
+<head>
+    <title>Home - Aziel</title>
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+    <%- include("../parts/head.ejs") %>
+  </head>
+  
+  <body>
+    <%- include("../parts/nav.ejs", { bot, user }) %>
+      <div class="wrapper vcenter-item" style="margin-top: 100px;">
+        <div id="home">
+         <center>
+            <h1 style="color: white">Staff Panel</h1>
+            <p style="color: white">Welcome to the staff panel, the place to do everything staff releated.</p>
+        </center>
+        <div class="wrapper vcenter-item" style="margin-top: 100px;">
+            <div id="home">
+              <div class="container-sm center">
+                <% if (alert) { %>
+                    <div class="alert alert-success" role="alert">
+                      <%= alert %>
+                    </div>
+                    <% } %>
+            <h2 style="color: white;margin-top: 50px">Blacklist Guild</h2>
+            <hr>
+            <form action="/panel/blacklistGuild" method="POST">
+              <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i class="fa-regular fa-id-card"></i> Guild ID:</p>
+              <input type="text" class="form-control" name="id"
+                placeholder="Some guild id."><br>
+              <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i
+                  class="fa-solid fa-pen"></i> Reason:</p>
+              <input type="text" class="form-control" name="reason" placeholder="Worst guild ever made.">
+              <br><button type="submit" class="btn btn-danger text-white"><i class="fa-solid fa-paper-plane"></i>
+                Submit</button>
+            </form>
+            <br>
+            <h2 style="color: white;margin-top: 50px">Blacklist User</h2>
+            <hr>
+            <form action="/panel/blacklistUser" method="POST">
+              <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i class="fa-regular fa-id-card"></i> User ID:</p>
+              <input type="text" class="form-control" name="id"
+                placeholder="Some user id."><br>
+              <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i
+                  class="fa-solid fa-pen"></i> Reason:</p>
+              <input type="text" class="form-control" name="reason" placeholder="Dumbass.">
+              <br><button type="submit" class="btn btn-danger text-white"><i class="fa-solid fa-paper-plane"></i>
+                Submit</button>
+            </form>
+            </div>
+           </div>
+          </div>
+         </div>
+       </div>
+  </body>

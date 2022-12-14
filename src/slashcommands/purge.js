@@ -25,7 +25,11 @@ module.exports = {
           const embed = new EmbedBuilder()
             .setColor("#39C6F1")
             .setDescription(`**<:checkmark:1045963641406640148> I have successfully purged ${amount} messages.**`)
-          interaction.editReply({ embeds: [embed], ephemeral: true })
+          interaction.channel.send({ embeds: [embed], ephemeral: true }).then(msg => {
+            setTimeout(() => {
+              msg.delete();
+            }, 2500)
+          })
         });
       } else {
         const errorEmbed = new EmbedBuilder()

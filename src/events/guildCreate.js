@@ -6,6 +6,10 @@ module.exports = {
     name: Events.GuildCreate,
     once: false,
     async execute(guild, client) {
+        const checkGuildBL = await global.blacklistModel.findOne({ guildid: guild.id });
+        if (checkGuildBL) return guild.leave().catch(() => {});
+        const checkUserBL = await global.blacklistModel.findOne({ userid: guild.ownerId });
+        if (checkUserBL) return guild.leave().catch(() => {});
 
         vitallist.postStats(client, global.config.vlAPIKEY)
         

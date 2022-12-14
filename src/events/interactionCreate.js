@@ -8,6 +8,11 @@ module.exports = {
 
         const command = client.slashcommands.get(interaction.commandName);
 
+        let checkBlacklist = await global.blacklistModel.findOne({ userid: interaction.user.id });
+    if (checkBlacklist) {
+      return interaction.reply({ content: "You have been **blacklisted** from using **Aziel**.\nMake an appeal: https://discord.gg/HrWe2BwVbd", ephemeral: true });
+    }
+
         if (!command) {
             console.error(`No command matching ${interaction.commandName} was found.`);
             return await interaction.reply({ content: `No command matching ${interaction.commandName} was found.`, ephemeral: true });

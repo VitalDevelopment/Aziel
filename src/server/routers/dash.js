@@ -68,6 +68,7 @@ router.get('/', checkAuth, (req, res) => {
    }
 
    data.prefix = req.body.prefix;
+   data.welcomeAndLeave = req.body.welcomeAndLeave;
    data.welcomeMessage = req.body.welcomeMessage;
    data.welcomeChannel = req.body.welcomeChannel;
    data.leaveMessage = req.body.leaveMessage;

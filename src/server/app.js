@@ -114,7 +114,7 @@ app.get(
     failureRedirect: "/",
   }),
   function (req, res) {
-    res.redirect(req.session.returnTo || "/"); 
+    res.redirect(req.session.returnTo || "/dashboard"); 
   } 
 );
 
@@ -135,6 +135,10 @@ const dashRouter = require('./routers/dash.js');
 app.use('/dashboard', dashRouter);
 app.use('/dash', dashRouter);
 
+const staffRouter = require('./routers/panel.js');
+app.use('/panel', staffRouter);
+app.use('/staff', staffRouter);
+
 app.get("/", (req, res) => {
     res.render("index.ejs", {
         bot: global.client,
@@ -145,6 +149,13 @@ app.get("/", (req, res) => {
 
 app.get("/invite", (req, res) => res.redirect("https://discord.com/api/oauth2/authorize?client_id=829896567963910164&permissions=4398046510967&scope=applications.commands%20bot"))
 app.get("/discord", (req, res) => res.redirect("https://discord.gg/HrWe2BwVbd"))
+
+app.all("*", (req, res) => {
+  res.status(404);
+  res.render("404.ejs", {
+    user: req.user || null,
+  });
+});
 
 app.listen(config.port, () => {
     console.log(`Listening on port ${config.port}.`)

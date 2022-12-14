@@ -21,7 +21,7 @@
                 <h2 class="text-center talign" style="color:white;margin-top: -15px;">
                   <%= guild.name %>
                 </h2><br><br>
-                <h1 style="color: white">Basic Settings</h1>
+                <h2 style="color: white">Basic Settings</h2>
                 <hr>
                 <form action="/dashboard/<%= guild.id %>" method="POST">
                   <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i
@@ -33,8 +33,28 @@
                   <input type="text" class="form-control" name="nickname"
                     value="<%= settings.nickname ?? global.config.bot.prefix %>" placeholder="Enter name.">
                   <br><br>
-                  <h1 style="color: white">Welcome & Leave Messages</h1>
+                  <h2 style="color: white">Welcome & Leave Messages</h2>
                   <hr>
+                  <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i
+                    class="fa-solid fa-message"></i> Toggle Welcome & Leave:</p>
+                <select name="welcomeAndLeave" id="welcomeAndLeave" class="form-control"
+                  placeholder="Enable/Disable">
+                      <% if (settings.welcomeAndLeave === false) { %>
+                        <option selected value="<%= false %>">
+                          Disabled
+                        </option>
+                        <option value="<%= true %>">
+                          Enabled
+                        </option>
+                        <% } else { %>
+                          <option selected value="<%= true %>">
+                            Enabled
+                          </option>
+                          <option value="<%= false %>">
+                            Disabled
+                          </option>
+                          <% } %>
+                </select><br>
                   <p class="h5" style="margin-bottom: 0.5rem; margin-top: 10px;color: white"><i
                       class="fa-solid fa-message"></i> Welcome Message:</p>
                   <input type="text" class="form-control" name="welcomeMessage" value="<%= settings.welcomeMessage %>"
