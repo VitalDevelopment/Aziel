@@ -1,4 +1,4 @@
-const { EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
 
 
 module.exports = {
@@ -20,6 +20,13 @@ module.exports = {
           text: `${client.user.username} - Server Management`,
           iconURL: client.user.displayAvatarURL(),
         });
-      return message.reply({ embeds: [embed] });
+        const row = new ActionRowBuilder()
+      .addComponents(
+        new ButtonBuilder()
+          .setURL(`https://azielbot.xyz/dashboard/${message.guild.id}`)
+          .setLabel("Dashboard")
+          .setStyle(ButtonStyle.Link)
+      )
+      return message.reply({ embeds: [embed],  });
   },
 };
