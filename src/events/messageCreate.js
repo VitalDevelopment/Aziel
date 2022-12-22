@@ -43,8 +43,10 @@ module.exports = {
           return await message.reply({ embeds: [embed] })
         }
         message.channel.sendTyping();
-         setTimeout(() => { 
-        cmd.run(client, message, args)
+        setTimeout(async () => { 
+        data.commandsRan = data.commandsRan + 1;
+        await guild.save();
+        await cmd.run(client, message, args)
         }, 500);
       } else {
         try {

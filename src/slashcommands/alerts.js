@@ -155,7 +155,7 @@ module.exports = {
 			const reportID = interaction.options.getInteger('report_id');
 			const data = await global.guildModel.findOne({ id: interaction.guild.id });
 			const report = await global.alertModel.findOne({ id: reportID })
-			if (!report) return await interaction.editReply({ content: "<:xmark:1045967248038309970>  I couldn't find that report in the database."})
+			if (!report) return await interaction.editReply({ content: "<:xmark:1045967248038309970> I couldn't find that report in the database."})
 		if(data) {
 			{
 				const newGuild = new global.guildModel({
@@ -169,7 +169,7 @@ module.exports = {
 		   if (report.ignore.includes(interaction.guild.id)) {
 			report.ignore.splice(report.ignore.indexOf(interaction.guild.id), 1);
 			await report.save().then(
-				await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have un ignored the user alert for <@${report.userid}>.`})
+				await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have un-ignored the user alert for <@${report.userid}>.`})
 			)
 		   } else {
 		   report.ignore.push(interaction.guild.id)

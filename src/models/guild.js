@@ -17,6 +17,10 @@ let app = mongoose.Schema({
     type: String,
     required: false
   },
+  commandsRan: {
+    type: Number,
+    default: 0
+  },
   welcomeAndLeave: {
     type: Boolean,
     required: false,
