@@ -42,7 +42,7 @@ module.exports = {
 							subcommand
 							.setName('enable')
 							.setDescription('Enbales auto user join alerts, alerts you if a reported user joins your server.')
-							.addIntegerOption(option =>
+							.addChannelOption(option =>
 								option
 							 .setName('channel')
 							 .setDescription('The channel to send new user alerts in.')
