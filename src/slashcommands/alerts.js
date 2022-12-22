@@ -37,7 +37,16 @@ module.exports = {
 							option
 						 .setName('report_id')
 						 .setDescription('The ID of the report to view.')
-						 .setRequired(true))),
+						 .setRequired(true)))
+						 .addSubcommand(subcommand =>
+							subcommand
+							.setName('enable')
+							.setDescription('Enbales auto user join alerts, alerts you if a reported user joins your server.')
+							.addIntegerOption(option =>
+								option
+							 .setName('channel')
+							 .setDescription('The channel to send new user alerts in.')
+							 .setRequired(true))),
 
 	async execute(interaction) {
 		
@@ -114,7 +123,25 @@ module.exports = {
 			embed.setImage(data.proof);
 		} 
 		await interaction.editReply({ embeds: [embed] }).catch(() => null);
-        } 
+        } else if (interaction.options.getSubcommand() === 'enable') {
+
+        const data = await global.guildModel.findOne({ id: interaction.guild.id })
+		if(data) {
+			{
+				const newGuild = new global.guildModel({
+				  id: interaction.guild.id, name: interaction.guild.name, icon: interaction.guild.iconURL({ dynamic: true })
+				});
+				await newGuild.save().catch((e) => {
+				  console.error(e);
+				});
+		      }
+		   }
+		   const channel = interaction.options.getChannel('channel');
+		   data.userAlerts = channel.id;
+		   await data.save().then(
+			await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have enabled the auto join alerts and set the channel to ${channel}.`})
+		   )
+	    }
 	},
 };
 

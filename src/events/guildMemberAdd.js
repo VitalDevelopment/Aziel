@@ -16,12 +16,13 @@ module.exports = {
           const embed = new EmbedBuilder()
 	      .setTitle("<:alert:1055541142604763166> User Alert")
 		  .setColor("#39C6F1")
+		  .setThumbnail(member.guild.iconURL({ dynamic: true }))
 		  .setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({ dynamic: true}) })
 		  .setDescription("There is an alert on the new user who just joined.")
-		  .addFields({ name: "🕵️ Reporter:", value: `${reporter.tag} \`${reporter.id}\``, inline: true})
+		  .addFields({ name: "🕵️ Reporter:", value: `${reporter}`, inline: true})
 		  .addFields({ name: "⌚ Reported", value: `<t:${Math.floor(alert.timestamp / 1000)}:R>`, inline: true})
 		  .addFields({ name: "📝 Reason:", value: `\`\`\`${alert.reason}\`\`\``, inline: false})
-		  .setFooter({ text: `${client.user.username} - User Alerts | Report ID: ${alert.id}`})
+		  .setFooter({ text: `${client.user.username} - User Alerts | Report ID: ${alert.id}`, iconURL: client.user.displayAvatarURL() })
 		  if (alert.proof) {
 			embed.setImage(alert.proof);
 		} 
