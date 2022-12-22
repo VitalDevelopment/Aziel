@@ -9,6 +9,7 @@ require("./server/app.js");
 //-Defining globals-//
 global.guildModel = require("./models/guild.js");
 global.warnModel = require("./models/warning.js");
+global.alertModel = require("./models/alert.js")
 global.blacklistModel = require("./models/blacklist.js");
 
 //-Discord Clients-//

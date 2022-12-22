@@ -26,5 +26,10 @@ let app = mongoose.Schema({
     type: Date,
     required: false,
   },
+  ignore: {
+    type: Array,
+    required: false,
+  },
+  
 });
 module.exports = mongoose.model("userAlerts", app);

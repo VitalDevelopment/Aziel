@@ -44,6 +44,10 @@ let app = mongoose.Schema({
   leaveChannel: {
     type: String,
     required: false,
+  },
+  userAlerts: {
+    type: String,
+    required: false,
   }
 });
 module.exports = mongoose.model("guilds", app);

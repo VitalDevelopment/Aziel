@@ -6,6 +6,6 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.info(`${client.user.tag} is online and ready.`)
-		client.user.setActivity("Bryden code me.", { type: ActivityType.Watching })
+		client.user.setActivity(`azielbot.xyz | ${client.guilds.cache.size} guilds.`, { type: ActivityType.Watching })
 	},
 };
