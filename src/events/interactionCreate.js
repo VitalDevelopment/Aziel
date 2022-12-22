@@ -5,6 +5,7 @@ module.exports = {
     once: false,
     async execute(interaction, client) {
         if (!interaction.isChatInputCommand()) return;
+        const guild = await global.guildModel.findOne({ id: interaction.guild.id});
 
         const command = client.slashcommands.get(interaction.commandName);
 
@@ -19,6 +20,8 @@ module.exports = {
         }
 
         try {
+            guild.commandsRan = guild.commandsRan + 1;
+            await guild.save();
             await command.execute(interaction, client);
         } catch (error) {
             console.error(error);
