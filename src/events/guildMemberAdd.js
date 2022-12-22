@@ -12,11 +12,16 @@ module.exports = {
 	if (alert) {
 		if(data.userAlerts) {
 		if (!alert.ignore.includes(member.guild.id)) {
+			const reporter = await client.users.fetch(alert.reporter);
           const embed = new EmbedBuilder()
 	      .setTitle("<:alert:1055541142604763166> User Alert")
+		  .setColor("#39C6F1")
+		  .setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({ dynamic: true}) })
 		  .setDescription("There is an alert on the new user who just joined.")
+		  .addFields({ name: "🕵️ Reporter:", value: `${reporter.tag} \`${reporter.id}\``, inline: true})
 		  .addFields({ name: "⌚ Reported", value: `<t:${Math.floor(alert.timestamp / 1000)}:R>`, inline: true})
-		  .addFields({ name: "📝 Reason:", value: `\`\`\`${alert.reason}\`\`\``, inline: true})
+		  .addFields({ name: "📝 Reason:", value: `\`\`\`${alert.reason}\`\`\``, inline: false})
+		  .setFooter({ text: `${client.user.username} - User Alerts | Report ID: ${alert.id}`})
 		  if (alert.proof) {
 			embed.setImage(alert.proof);
 		} 
