@@ -104,6 +104,7 @@ module.exports = {
 				let report = await model.findOne({ userid: member.user.id });
 				if(report) {
 					let reported = "Reported User:";
+					if (report.ignore.includes(interaction.guild.id)) return;
 					if(member.user.bot) reported = "Reported Bot:";
 					embed.addFields({ name: `${reported}`, value: `<@${member.user.id}> -> **Report ID**: ${report.id}`});
 					embed.setDescription(" ")
