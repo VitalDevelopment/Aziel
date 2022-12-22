@@ -166,7 +166,7 @@ module.exports = {
 		      }
 		   }
 		   report.ignore.push(interaction.guild.id)
-		   await data.save().then(
+		   await report.save().then(
 			await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have ignored user alert for <@${report.userid}>.`})
 		   )
 		}
