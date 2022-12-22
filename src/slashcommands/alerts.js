@@ -46,7 +46,16 @@ module.exports = {
 								option
 							 .setName('channel')
 							 .setDescription('The channel to send new user alerts in.')
-							 .setRequired(true))),
+							 .setRequired(true)))
+							 .addSubcommand(subcommand =>
+								subcommand
+								.setName('ignore')
+								.setDescription('Ignores a certain user alert for this server.')
+								.addChannelOption(option =>
+									option
+								 .setName('report_id')
+								 .setDescription('The channel to send new user alerts in.')
+								 .setRequired(true))),
 
 	async execute(interaction) {
 		
@@ -141,7 +150,26 @@ module.exports = {
 		   await data.save().then(
 			await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have enabled the auto join alerts and set the channel to ${channel}.`})
 		   )
-	    }
+	    } else if (interaction.options.getSubcommand() === 'ignore') {
+			const reportID = interaction.options.getInteger('report_id');
+			const data = await global.guildModel.findOne({ id: interaction.guild.id });
+			const report = await global.alertModel.findOne({ id: reportID })
+			if (!report) return await interaction.editReply({ content: "<:xmark:1045967248038309970>  I couldn't find that report in the database."})
+		if(data) {
+			{
+				const newGuild = new global.guildModel({
+				  id: interaction.guild.id, name: interaction.guild.name, icon: interaction.guild.iconURL({ dynamic: true })
+				});
+				await newGuild.save().catch((e) => {
+				  console.error(e);
+				});
+		      }
+		   }
+		   report.ignore.push(interaction.guild.id)
+		   await data.save().then(
+			await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have ignored user alert for <@${report.userid}>.`})
+		   )
+		}
 	},
 };
 
