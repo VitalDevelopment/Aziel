@@ -45,7 +45,7 @@ module.exports = {
         message.channel.sendTyping();
         setTimeout(async () => { 
         data.commandsRan = data.commandsRan + 1;
-        await guild.save();
+        await data.save();
         await cmd.run(client, message, args)
         }, 500);
       } else {
