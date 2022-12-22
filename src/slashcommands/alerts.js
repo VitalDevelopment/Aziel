@@ -51,7 +51,7 @@ module.exports = {
 								subcommand
 								.setName('ignore')
 								.setDescription('Ignores a certain user alert for this server.')
-								.addChannelOption(option =>
+								.addIntegerOption(option =>
 									option
 								 .setName('report_id')
 								 .setDescription('The channel to send new user alerts in.')
