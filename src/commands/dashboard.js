@@ -27,6 +27,6 @@ module.exports = {
           .setLabel("Dashboard")
           .setStyle(ButtonStyle.Link)
       )
-      return message.reply({ embeds: [embed],  });
+      return message.reply({ embeds: [embed], components: [row] });
   },
 };

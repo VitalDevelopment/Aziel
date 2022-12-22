@@ -23,6 +23,6 @@ module.exports = {
         text: `${client.user.username} - Commands`,
         iconURL: client.user.displayAvatarURL(),
       });
-    return message.reply({ embeds: [embed], components: [row] });
+    return message.reply({ embeds: [embed] });
   },
 };
