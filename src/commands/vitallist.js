@@ -15,7 +15,8 @@ module.exports = {
      .setColor("#39C6F1")
      .setTitle("VitalList API")
      .setThumbnail(`https://cdn.discordapp.com${data.avatar}`)
-     .setDescription(`:black_square_button:Username: ${data.username}#${data.discriminator}\n:black_square_button:Prefix: ${data.prefix}\n:black_square_button:Owner: <@${data.owner}> \`${data.ownerTag}\``)
+     .setDescription(`:black_square_button:Username: ${data.username}#${data.discriminator}\n:black_square_button:Prefix: ${data.prefix}\n:black_square_button:Owner: <@${data.owner}> \`${data.ownerTag}\`\n:black_square_button:Added On: <t:${Math.floor(data.submittedOn / 1000)}:R>\n:black_square_button:Approved On: <t:${Math.floor(data.approvedOn / 1000)}:R>\n:black_square_button:Tags: ${data.tags.join(", ")}`)
+     .addFields({ name: "Short Description", value: `\`\`\`${data.shortDescription}\`\`\`` })
      message.reply({ embeds: [embed] })
     } catch (err) {
       console.error(err);
