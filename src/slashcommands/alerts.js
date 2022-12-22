@@ -167,7 +167,7 @@ module.exports = {
 		      }
 		   }
 		   if (report.ignore.includes(interaction.guild.id)) {
-			report.ignore.splice(report.ingore.indexOf(interaction.guild.id), 1);
+			report.ignore.splice(report.ignore.indexOf(interaction.guild.id), 1);
 			await report.save().then(
 				await interaction.editReply({ content: `<:checkmark:1045963641406640148> I have un ignored the user alert for <@${report.userid}>.`})
 			)
