@@ -28,6 +28,7 @@ app.use(
     crossOriginEmbedderPolicy: false,
   })
 );
+app.use(helmet.frameguard());
 app.set('view engine', 'ejs');
 app.set('views', './src/server/pages');
 app.use(express.static("./src/server/pages/static"))
