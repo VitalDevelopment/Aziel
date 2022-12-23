@@ -13,11 +13,11 @@ router.get('/', checkAuth, (req, res) => {
 
   router.get('/:id', checkAuth, async (req, res) => {
     const guild = await client.guilds.cache.get(req.params.id);
-    if (!guild) return res.redirect("/dashboard");
+    if (!guild) return res.redirect("/404");
 
     try {
       const member = await guild.members.fetch(req.user.id);
-      if(!member) return res.redirect("/dashboard");
+      if(!member) return res.redirect("/404?message=403 Forbidden");
   
     if (!member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
         return res.redirect("/dashboard");

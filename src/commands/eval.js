@@ -6,7 +6,7 @@ module.exports = {
     category: "Dev",
     description: "Evaluates Javascript code in a command.",
     async run(client, message, args) {
-        if (!global.config.ownerids.includes(message.author.id)) return null;
+        if (!global.config.ownerids.includes(message.author.id)) return message.reply("<:xmark:1045967248038309970> This is an owner only command.");
         const errorEmbed = new EmbedBuilder()
             .setColor("#39C6F1")
             .setDescription("**<:xmark:1045967248038309970> You must provide code to evaluate.**")

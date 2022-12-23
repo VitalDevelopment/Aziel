@@ -146,6 +146,14 @@ app.get("/", (req, res) => {
         config: global.config,
     })
 })
+app.get("/commands", (req, res) => {
+  res.render("commands.ejs", {
+      bot: global.client,
+      user: req.user,
+      config: global.config,
+      commands: global.client.commands
+  })
+})
 
 app.get("/invite", (req, res) => res.redirect("https://discord.com/api/oauth2/authorize?client_id=829896567963910164&permissions=4398046510967&scope=applications.commands%20bot"))
 app.get("/discord", (req, res) => res.redirect("https://discord.gg/HrWe2BwVbd"))

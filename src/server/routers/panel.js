@@ -25,7 +25,7 @@ try {
         timestamp: Date.now()
     })
    const owner = await client.users.fetch(guild.ownerId);
-    owner.send(`Your server **${guild.name}** has been blacklisted from using **${global.client.user.username}**.\n**Reason**: ${data.reason}`).catch(() => {});
+    owner.send(`Your server **${guild.name}** has been blacklisted from using **${global.client.user.username}**.\n**Reason**: ${data.reason}`).catch(() => null);
    res.render("panel/index.ejs", {
     bot: global.client,
     alert: `You have successully blacklisted ${guild.name}.`,
