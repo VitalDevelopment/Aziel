@@ -33,6 +33,7 @@
     "passport-discord": "^0.1.4",
     "superagent": "^8.0.6",
     "twemoji-parser": "^14.0.0",
+    "vcodes.js": "^4.0.1",
     "vitallist.js": "^1.5.0",
     "xmlhttp-request": "^0.4.1"
   }
