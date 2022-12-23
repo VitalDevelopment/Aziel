@@ -15,11 +15,15 @@ router.get('/', checkAuth, (req, res) => {
     const guild = await client.guilds.cache.get(req.params.id);
     if (!guild) return res.redirect("/dashboard");
 
-    const member = await guild.members.fetch(req.user.id);
-    if(!member) return res.redirect("/dashboard");
-
-  if (!member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
-      return res.redirect("/dashboard");
+    try {
+      const member = await guild.members.fetch(req.user.id);
+      if(!member) return res.redirect("/dashboard");
+  
+    if (!member.permissions.has(PermissionsBitField.Flags.ManageGuild)) {
+        return res.redirect("/dashboard");
+      }
+    } catch(err) {
+      res.status(403).redirect("/404?message=403 Forbidden")
     }
 
      let data = await global.guildModel.findOne({ id: guild.id });
