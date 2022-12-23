@@ -32,6 +32,17 @@ app.set('view engine', 'ejs');
 app.set('views', './src/server/pages');
 app.use(express.static("./src/server/pages/static"))
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://azielbot.xyz");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  if (req.method === "OPTIONS") {
+    res.status(200).send();
+  } else {
+    next();
+  }
+});
+
 //-Alaways use protection!-//
 
 var minifyHTML = require("express-minify-html-terser");
