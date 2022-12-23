@@ -26,9 +26,14 @@ app.use(
   helmet({
     contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false,
+    frameguard: true,
   })
 );
-app.use(helmet.frameguard());
+app.use(helmet.frameguard({ action: 'sameorigin' }));
+app.use((req, res, next) => {
+  res.setHeader("X-Frame-Options", "ALLOW-FROM https://vitallist.xyz https://top.gg");
+  next();
+});
 app.set('view engine', 'ejs');
 app.set('views', './src/server/pages');
 app.use(express.static("./src/server/pages/static"))
