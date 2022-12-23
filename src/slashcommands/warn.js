@@ -1,46 +1,52 @@
-const { EmbedBuilder, PermissionsBitField } = require('discord.js')
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js')
 
 module.exports = {
-  name: "warn",
-  category: "Mod",
-  description: "Warns a user in the guild.",
-  async run(client, message, args) {
+    data: new SlashCommandBuilder()
+        .setName('warn')
+        .setDescription('Warns a user in this guild.')
+        .addUserOption(option =>
+            option
+                .setName('target')
+                .setDescription('The member to ban.')
+                .setRequired(true))
+        .addStringOption(option =>
+            option.setName('reason')
+                .setDescription('The reason for warning them.'))
+        .setDefaultMemberPermissions(PermissionsBitField.Flags.ManageMessages)
+        .setDMPermission(false),
+    async execute(interaction, client) {
+        await interaction.deferReply().catch(() => null);
+        const guild = client.guilds.cache.get(interaction.guild.id);
+        const user = interaction.options.getUser('target');
+        const reason = interaction.options.getString('reason') ?? 'No reason provided.';
 
-    const permissionsEmbed = new EmbedBuilder()
-      .setColor("#39C6F1")
-      .setDescription("**<:xmark:1045967248038309970> You need the \"Manage Messages\" permission to use this command.**");
-    if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return message.reply({ embeds: [permissionsEmbed] });
-
-    const guild = client.guilds.cache.get(message.guild.id);
-    let user = message.mentions.users.first() || client.users.cache.get(args[0]);
-    let reason = args.splice(1).join(" ");
-    const errorEmbed = new EmbedBuilder()
+        const errorEmbed = new EmbedBuilder()
       .setColor("#39C6F1")
       .setDescription("<:xmark:1045967248038309970> You must provide a user for me to warn.")
-    if (!user) return message.reply({ embeds: [errorEmbed] })
+    if (!user) return interaction.editReply({ embeds: [errorEmbed] })
     if (!reason) reason = "No Reason Provied";
     const error2Embed = new EmbedBuilder()
     .setColor("#39C6F1")
     .setDescription("<:xmark:1045967248038309970> You cannot warn yourself or a bot silly.")
-    if (user.id === message.author.id || user.bot) return message.reply({ embeds: [error2Embed] })
+    if (user.id === interaction.user.id || user.bot) return interaction.editReply({ embeds: [error2Embed] })
 
     try {
         let id = makeId(10, 10000);
         await global.warnModel.create({
             id: id,
             userid: user.id,
-            guildid: message.guild.id,
-            modid: message.author.id,
+            guildid: interaction.guild.id,
+            modid: interaction.user.id,
             reason: reason,
             timestamp: Date.now()
         })
-        const warnings = await global.warnModel.find({ userid: user.id, guildid: message.guild.id});
+        const warnings = await global.warnModel.find({ userid: user.id, guildid: interaction.guild.id });
         const warnEmbed = new EmbedBuilder()
         .setColor("#39C6F1")
         .setTitle(`Warning ${warnings.length}`)
-        .setDescription(`You have been warned in **${message.guild.name}**.`)
+        .setDescription(`You have been warned in **${interaction.guild.name}**.`)
         .addFields({ name: "Reason", value: reason, inline: true })
-        .addFields({ name: "Executor", value: `${message.author}`, inline: true })
+        .addFields({ name: "Executor", value: `${interaction.user}`, inline: true })
         .setFooter({ text: `${client.user.username} - Warn Management | Warning ID: ${id}`, iconURL: client.user.displayAvatarURL() })
          user.send({ embeds: [warnEmbed] })
 
@@ -49,17 +55,17 @@ module.exports = {
           .setTitle("<:checkmark:1045963641406640148> Successfully Warned")
           .setDescription(`I have successfully warned **${user.tag}**.`)
           .addFields({ name: "Reason", value: reason, inline: true })
-          .addFields({ name: "Executor", value: `${message.author}`, inline: true })
+          .addFields({ name: "Executor", value: `${interaction.user}`, inline: true })
           .setFooter({ text: `${client.user.username} - Warn Management | Warning ID: ${id}`, iconURL: client.user.displayAvatarURL() })
-        return message.reply({ embeds: [embed] });
+        return interaction.editReply({ embeds: [embed] });
     } catch (err) {
       console.error(err);
       const errorEmbed = new EmbedBuilder()
         .setColor("#39C6F1")
         .setDescription(`<:xmark:1045967248038309970> There was an error while executing this command! \n\`\`\`js\n${err}\`\`\``)
-      await message.reply({ embeds: [errorEmbed] });
-    }
-  },
+      await interaction.editReply({ embeds: [errorEmbed] });
+        }
+    },
 };
 
 function makeId(length){
