@@ -17,7 +17,7 @@ module.exports = {
         .setColor("39C6F1")
         .setDescription(`${guild.name} has added me, I'm now in ${client.guilds.cache.size} guilds.`)
         .setThumbnail(guild.iconURL({ dynamic: true }))
-        .addFields({ name: "Guild Owner", value: `<@${guild.ownerId}> \`${owner.tag}\``, inline: true})
+        .addFields({ name: "Guild Owner", value: `<@${guild.ownerId}>\n\`${owner.tag}\``, inline: true})
         .addFields({ name: "Member Conut", value: `${guild.memberCount} members.`, inline: true})
         .setFooter({ text: `${client.user.username} - Guild Logs`, iconURL: client.user.displayAvatarURL() })
         client.channels.resolve("1055922739136958464").send({ embeds: [embed] });

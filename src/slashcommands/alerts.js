@@ -90,7 +90,7 @@ module.exports = {
 		if (interaction.options.getAttachment('attachment')) {
 			embed.setImage(interaction.options.getAttachment('attachment').url);
 		} 
-		client.channels.cache.get("1013479679497338930").send({ embeds: [embed] }).catch(() => null);
+		client.channels.cache.get("1055922808636579861").send({ embeds: [embed] }).catch(() => null);
 		await interaction.editReply({ content: "<:checkmark:1045963641406640148> Your report was sent successfully.", ephemeral: true }).catch(() => null);
 
     	} else if (interaction.options.getSubcommand() === 'list') {
