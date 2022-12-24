@@ -22,6 +22,7 @@ module.exports = {
     if (message.author.bot || !message.guild) return;
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 
+    if (global.cooldown.has(message.author.id)) return;
 
     let args = message.content.split(" ");
     let command = args.shift().slice(prefix.length).toLowerCase();
@@ -42,12 +43,13 @@ module.exports = {
             .setFooter({ text: `${client.user.username} - Command Management`, iconURL: client.user.displayAvatarURL() })
           return await message.reply({ embeds: [embed] })
         }
-        message.channel.sendTyping();
-        setTimeout(async () => { 
+        await cmd.run(client, message, args)
         data.commandsRan = data.commandsRan + 1;
         await data.save();
-        await cmd.run(client, message, args)
-        }, 500);
+        global.cooldown.add(message.author.id);
+        setTimeout(() => {
+          cooldown.delete(message.author.delete)
+        }, 2000)
       } else {
         try {
           message.author.send(`<:xmark:1045967248038309970> I don't have permission to send messages in <#${message.channel.id}>!\nPlease contact the owner to fix my permissions so I can work!`)
