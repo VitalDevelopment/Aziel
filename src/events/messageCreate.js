@@ -48,7 +48,7 @@ module.exports = {
         await data.save();
         global.cooldown.add(message.author.id);
         setTimeout(() => {
-          global.cooldown.delete(message.author.delete)
+          global.cooldown.delete(message.author.id)
         }, 2000)
       } else {
         try {
