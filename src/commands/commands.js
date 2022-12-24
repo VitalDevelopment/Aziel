@@ -12,17 +12,13 @@ module.exports = {
     const funCommands = client.commands.filter(c => c.category == "Fun").map(c => `\`${c.name}\` - ${c.description} | **Aliases**: \`${c.aliases ?? "None"}\``);
 
     const embed = new EmbedBuilder()
-      .setTitle(`${client.user.username} Coammands Menu`)
+      .setAuthor({ name: "Commands Menu", iconURL: client.user.displayAvatarURL() })
       .setColor("#39C6F1")
-      .addFields({ name: "**Information Commands**", value: infoCommands.join("\n") })
-      .addFields({ name: "**Fun Commands**", value: funCommands.join("\n") })
-      .addFields({ name: "**Utility Commands**", value: utilityCommands.join("\n") })
-      .addFields({ name: "**Configuration Commands**", value: configCommands.join("\n") })
-      .addFields({ name: "**Moderation Commands**", value: modCommands.join("\n") })
-      .setFooter({
-        text: `${client.user.username} - Commands`,
-        iconURL: client.user.displayAvatarURL(),
-      });
+      .addFields({ name: "**Information**", value: infoCommands.join("\n") })
+      .addFields({ name: "**Fun**", value: funCommands.join("\n") })
+      .addFields({ name: "**Utility **", value: utilityCommands.join("\n") })
+      .addFields({ name: "**Configuration**", value: configCommands.join("\n") })
+      .addFields({ name: "**Moderation**", value: modCommands.join("\n") })
     return message.reply({ embeds: [embed] });
   },
 };

@@ -29,7 +29,7 @@ module.exports = {
                 inline: true
             })
             .setFooter({
-                text: `${client.user.username} - Guild Logs`,
+                text: `${client.user.username} - Guild Logs | ID: ${guild.id}`,
                 iconURL: client.user.displayAvatarURL()
             })
         client.channels.resolve("1055922739136958464").send({
