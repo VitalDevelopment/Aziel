@@ -1,6 +1,7 @@
 const {
     Events,
-    ActivityType
+    ActivityType,
+    EmbedBuilder
 } = require('discord.js');
 const model = global.guildModel;
 const vitallist = require("vitallist.js")
