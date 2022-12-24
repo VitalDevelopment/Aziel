@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/webhook/vote', checkAuth, checkStaff, (req, res) => {
+router.post('/webhook/vote', (req, res) => {
 
      console.log(req.body)
   })
