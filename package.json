@@ -18,6 +18,7 @@
     "browser-request": "^0.3.3",
     "connect-sqlite3": "^0.9.13",
     "connectfour-discord": "^0.1.17",
+    "dhms": "^1.0.1",
     "discord-gamecord": "^4.0.0",
     "discord-tictactoe": "^4.0.0",
     "discord.js": "^14.6.0",

@@ -10,7 +10,8 @@ module.exports = {
         .setDescription('The amount of messages to purge.')
         .setMinValue(2)
         .setMaxValue(99)
-        .setRequired(true)),
+        .setRequired(true))
+        .setDMPermission(false),
   async execute(interaction, client) {
     const amount = interaction.options.getInteger('amount');
     try {

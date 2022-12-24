@@ -55,7 +55,8 @@ module.exports = {
 									option
 								 .setName('report_id')
 								 .setDescription('The channel to send new user alerts in.')
-								 .setRequired(true))),
+								 .setRequired(true)))
+								 .setDMPermission(false),
 
 	async execute(interaction) {
 		

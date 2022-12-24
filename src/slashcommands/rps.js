@@ -8,7 +8,8 @@ module.exports = {
     .addUserOption(option =>
       option.setName("opponent")
         .setDescription("The member you want to play against.")
-        .setRequired(true)),
+        .setRequired(true))
+        .setDMPermission(false),
   async execute(interaction, client) {
     let user = interaction.options.getUser('opponent')
 

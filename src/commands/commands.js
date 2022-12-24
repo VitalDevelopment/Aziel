@@ -2,6 +2,7 @@ const { EmbedBuilder } = require('discord.js')
 
 module.exports = {
   name: "commands",
+  aliases: ["cmds"],
   category: "Info",
   description: "Check out all of the commands on the bot.",
   async run(client, message, args) {

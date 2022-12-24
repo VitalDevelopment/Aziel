@@ -11,6 +11,7 @@ global.guildModel = require("./models/guild.js");
 global.warnModel = require("./models/warning.js");
 global.alertModel = require("./models/alert.js")
 global.blacklistModel = require("./models/blacklist.js");
+global.giveawayModel = require("./models/giveaway.js");
 
 //-Discord Clients-//
 const client = new Client({
