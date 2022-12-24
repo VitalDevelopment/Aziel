@@ -49,7 +49,7 @@ module.exports = {
         global.cooldown.add(message.author.id);
         setTimeout(() => {
           global.cooldown.delete(message.author.id)
-        }, 2000)
+        }, 3000)
       } else {
         try {
           message.author.send(`<:xmark:1045967248038309970> I don't have permission to send messages in <#${message.channel.id}>!\nPlease contact the owner to fix my permissions so I can work!`)

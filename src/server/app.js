@@ -151,10 +151,11 @@ app.get("/auth/info", async (req, res) => {
 const dashRouter = require('./routers/dash.js');
 app.use('/dashboard', dashRouter);
 app.use('/dash', dashRouter);
-
 const staffRouter = require('./routers/panel.js');
 app.use('/panel', staffRouter);
 app.use('/staff', staffRouter);
+const apiRouter = require('./routers/api.js');
+app.use('/api', apiRouter);
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {
