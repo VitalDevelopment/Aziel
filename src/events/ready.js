@@ -23,7 +23,10 @@ module.exports = {
 				  .setFooter({ text: `Giveaway ID: ${db.messageid}`, iconURL: client.user.displayAvatarURL() })
 		  
 				  if (db.entries.length === 0) {
-					client.guilds.cache.get(db.guildid).channels.resolve(db.channelid).messages.fetch({ message: db.messageid }).then(m => m.edit({
+					await db.updateOne({
+						status: 'ended',
+					  })
+					return await client.guilds.cache.get(db.guildid).channels.resolve(db.channelid).messages.fetch({ message: db.messageid }).then(m => m.edit({
 					  embeds: [giveEmbed],
 					  components: []
 				    	}));
