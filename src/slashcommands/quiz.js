@@ -3,11 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('quiz')
-    .setDescription('Play a quick quiz in a Discord channel.')
-    .addSubcommand( subcommand => 
-        subcommand
-        .setName("random")
-        .setDescription("")),
+    .setDescription('Play a quick quiz in a Discord channel.'),
   async execute(interaction, client) {
     try {
         const quiz = require('../../quiz.json');
