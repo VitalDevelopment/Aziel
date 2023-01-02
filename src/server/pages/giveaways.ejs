@@ -33,7 +33,7 @@
         </a><br>
         <h3>Entrants</h3>
         <% giveaway.entries.forEach(async (e) => { %>
-          <% const user = bot.users.cache.get(e) %>
+          <% const user = bot.users.resolve(e) %>
           <img src="<%= user.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= user.tag %><br>
           <% }) %>
           <% if (giveaway.entries.length === 0) { %>
