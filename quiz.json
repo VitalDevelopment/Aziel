@@ -1,0 +1,22 @@
+[
+	{
+		"question": "What color is the sky?",
+		"answers": ["blue"]
+	},
+	{
+		"question": "How many letters are there in the alphabet?",
+		"answers": ["26", "twenty-six", "twenty six", "twentysix"]
+	},
+    {
+        "question": "What is the world’s smallest bird?",
+        "answers": ["Bee Hummingbird", "bee hummingbird", "beehummingbird"]
+    },
+    {
+       "question": "The atmosphere is held to the earth by _?",
+       "answers": ["Gravity", "gravity"] 
+    },
+    {
+        "question": "When was the war of 1812?",
+        "answers": ["1812", "Eighteen Twelve", "eighteen twelve", "eighteen-twelve"]
+    }
+]

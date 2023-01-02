@@ -154,8 +154,12 @@ app.use('/dash', dashRouter);
 const staffRouter = require('./routers/panel.js');
 app.use('/panel', staffRouter);
 app.use('/staff', staffRouter);
+const giveawayRouter = require('./routers/giveaway.js');
+app.use('/giveaways', giveawayRouter);
+app.use('/giveaway', giveawayRouter);
 const apiRouter = require('./routers/api.js');
 app.use('/api', apiRouter);
+
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {

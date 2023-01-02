@@ -67,7 +67,18 @@ body {
 .Container {
     background-color: #0e1015;
     padding: 1rem;
+    padding-left: 23rem;
     border-radius: 0.5rem;
+  }
+
+   @media (max-width: 768px) {
+
+    .Container {
+      background-color: #0e1015;
+      padding: 1rem;
+      padding-left: 1rem;
+      border-radius: 0.5rem;
+    }
   }
   
   .Grid__Container {

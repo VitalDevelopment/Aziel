@@ -59,7 +59,7 @@ module.exports = {
     }
     const msg = await channel.send("Loading Giveaway..");
           const giveawayEmbed = new EmbedBuilder()
-          .setAuthor({ name: "New Giveaway!", iconURL: interaction.guild.iconURL() })
+          .setTitle("New Giveaway!")
           .setColor("#39C6F1")
           .setDescription(`**Prize**: ${prize}\n**Entries**: 0\n**Ends**: <t:${Math.floor((dhms(time) + Date.now()) / 1000)}:R>\n**Hosted by**: ${interaction.user}`)
           .setFooter({ text: `Giveaway ID: ${msg.id}`, iconURL: client.user.displayAvatarURL() })

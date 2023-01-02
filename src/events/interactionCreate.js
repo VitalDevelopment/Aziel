@@ -37,13 +37,14 @@ module.exports = {
         if(interaction.customId === "gEnter") {
             await interaction.deferReply({ content: "<a:loading:1046294092432277525> Loading", ephemeral: true }).catch(() => null);
         const giveaway = await global.giveawayModel.findOne({ messageid: interaction.message.id });
+        if (!giveaway) return await interaction.editReply({ content: `<:xmark:1045967248038309970> Button response no longer vaild.`, ephemeral: true })
         if (giveaway.entries.includes(interaction.user.id)) {
             giveaway.entries.splice(giveaway.entries.indexOf(interaction.user.id), 1);
              await giveaway.save().then(
             await interaction.editReply({ content: `<a:954852422591869039:1045952892022034473> **You have successfully left the giveaway.**\nPeople who don't like free stuff are kinda dumb to me. :/`, ephemeral: true })
              )
              const embed = new EmbedBuilder()
-        .setAuthor({ name: "New Giveaway!", iconURL: interaction.guild.iconURL() })
+        .setTitle("New Giveaway!")
         .setColor("#39C6F1")
         .setFooter({ text: `Giveaway ID: ${interaction.message.id}`, iconURL: client.user.displayAvatarURL() })
         .setDescription(`**Prize**: ${giveaway.prize}\n**Ends**: <t:${Math.floor((giveaway.time + giveaway.timestamp) / 1000)}:R>\n**Entries**: ${giveaway.entries.length}\n**Hosted by**: <@${giveaway.hostedBy}>`)
@@ -55,7 +56,7 @@ module.exports = {
         await interaction.editReply({ content: `<:checkmark:1045963641406640148> **You have successfully entered the giveaway.**\nMind sharing some of that prize if you win? :)`, ephemeral: true })
         )
         const embed = new EmbedBuilder()
-        .setAuthor({ name: "New Giveaway!", iconURL: interaction.guild.iconURL() })
+        .setTitle("New Giveaway!")
         .setColor("#39C6F1")
         .setFooter({ text: `Giveaway ID: ${interaction.message.id}`, iconURL: client.user.displayAvatarURL() })
         .setDescription(`**Prize**: ${giveaway.prize}\n**Entries**: ${giveaway.entries.length}\n**Ends**: <t:${Math.floor((giveaway.time + giveaway.timestamp) / 1000)}:R>\n**Hosted by**: <@${giveaway.hostedBy}>`)

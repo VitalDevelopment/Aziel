@@ -1,5 +1,14 @@
 const { Events, ActivityType, EmbedBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder } = require('discord.js');
+const client = global.client;
 const vitallist = require('vitallist.js');
+const Statcord = require("statcord.js");
+const statcord = new Statcord.Client({
+    client,
+    key: "statcord.com-hOFCq1NEFblqjepuLx25",
+    postCpuStatistics: true, 
+    postMemStatistics: true,
+    postNetworkStatistics: true,
+});
 
 module.exports = {
 	name: Events.ClientReady,
@@ -7,7 +16,7 @@ module.exports = {
 	execute(client) {
 		console.info(`${client.user.tag} is online and ready.`)
 		client.user.setActivity(`azielbot.xyz | ${client.guilds.cache.size} guilds.`, { type: ActivityType.Watching })
-
+		statcord.autopost();
 		//-Checking Giveawy ends-//
 		setInterval(async () => {
 			let giveaways = await global.giveawayModel.find();
@@ -17,7 +26,7 @@ module.exports = {
 				let endDate = Date.now();
 				if (db.timestamp - (Date.now() - db.time) <= 0) {
 				  const giveEmbed = new EmbedBuilder()
-				  .setAuthor({ name: "Giveaway Ended", iconURL: guild.iconURL() })
+				  .setTitle("Giveaway Ended")
 				  .setColor("#39C6F1")
 				  .setDescription(`**No one entered into the giveaway, so I couldn't pick a winner.**\n**Prize**: ${db.prize}\n**Ended**: <t:${Math.floor((endDate) / 1000)}:R>\n**Entries**: ${db.entries.length}\n**Hosted by**: <@${db.hostedBy}>`)
 				  .setFooter({ text: `Giveaway ID: ${db.messageid}`, iconURL: client.user.displayAvatarURL() })
@@ -38,7 +47,7 @@ module.exports = {
 						await db.save()
 					  }
 					  const successEmbed = new EmbedBuilder()
-					  .setAuthor({ name: "Giveaway Ended", iconURL: guild.iconURL() })
+					  .setTitle("Giveaway Ended")
 					  .setColor("#39C6F1")
 					  .setDescription(`**Prize**: ${db.prize}\n**Entries**: ${db.entries.length}\n**Ended**: <t:${Math.floor((endDate) / 1000)}:R>\n**Hosted by**: <@${db.hostedBy}>`)
 					  .addFields({ name: "Winners", value: `${db.pickedWinners.map(w => `<@${w}> (\`${w}\`)`).join("\n ")}`})

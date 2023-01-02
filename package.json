@@ -32,6 +32,7 @@
     "nodemon": "^2.0.20",
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4",
+    "statcord.js": "^3.4.3",
     "superagent": "^8.0.6",
     "twemoji-parser": "^14.0.0",
     "vcodes.js": "^4.0.1",

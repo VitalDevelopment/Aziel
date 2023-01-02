@@ -1,0 +1,51 @@
+<head>
+    <title>Giveaways - Aziel</title>
+    <%- include("./parts/head.ejs") %>
+  </head>
+  
+  <body>
+    <%- include("./parts/nav.ejs", { user }) %>
+      <div class="wrapper vcenter-item" style="margin-top: 100px;">
+        <div id="home">
+<center>
+     <h2 style="color:white"><b>Giveaway Summary</b></h2>
+     <p style="color:white">Here's a detailed view on how this giveaway went.</p>
+    </center>
+    <div class="container" style="margin-top:50px;color: white">
+      <h3><b>Prize</b></h3>
+        <p style="font-size: 15px"> <%= giveaway.prize %></p><br>
+        <h3><b>Winners</b></h3>
+        <p><code><%= giveaway.winners %></code></p><br>
+        <h3><b>Entries</b></h3>
+        <p><code><%= giveaway.entries.length ?? 0 %></code></p><br>
+        <% if (giveaway.status === "active") { %>
+          <h3><b>Ends at</b></h3>
+        <p><%= new Date(Math.floor(giveaway.time + giveaway.timestamp)).toLocaleString('en-US'); %></p><br>
+        <% } else { %>
+        <h3><b>Ended at</b></h3>
+        <p><%= new Date(Math.floor(giveaway.time + giveaway.timestamp)).toLocaleString('en-US'); %></p><br>
+        <% } %>
+        <h3><b>Server</b></h3>
+        <p style="font-size: 20px;"><img src="<%= guild.iconURL %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= guild.name %></p><br>
+        <h3><b>Host</b></h3>
+        <a href="https://discord.com/users/<%= giveaway.host.id %>">
+        <p style="font-size: 20px;color: white; text-decoration: none;"> <img src="<%= giveaway.host.displayAvatarURL() %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= giveaway.host.tag %></p>
+        </a><br>
+        <h3>Entrants</h3>
+        <% giveaway.entries.forEach(async (e) => { %>
+          <% const user = bot.users.cache.get(e) %>
+          <img src="<%= user.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= user.tag %><br>
+          <% }) %>
+          <% if (giveaway.entries.length === 0) { %>
+            <p>There are no entries for this giveaway.</p>
+            <% } %>
+    </div>
+        </div>
+      </div>
+  </body>
+
+  <style>
+   .container {
+    padding-right: 450px;
+   }
+  </style>

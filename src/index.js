@@ -16,7 +16,7 @@ global.giveawayModel = require("./models/giveaway.js");
 //-Discord Clients-//
 const client = new Client({
     allowedMentions: {
-        parse: ["users", "roles"], repliedUser: false
+        parse: ["roles"], repliedUser: false
     },
     intents: [
         GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences,
