@@ -30,6 +30,7 @@
           <% const user = bot.users.resolve(e) %>
           <img src="<%= user.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= user.tag %><br>
           <% }) %>
+          <br></br>
           <% if (giveaway.entries.length === 0) { %>
             <p>There are no entries for this giveaway.</p>
             <% } %>
@@ -41,7 +42,6 @@
         <h3><b>Ended at</b></h3>
         <p><%= new Date(Math.floor(giveaway.time + giveaway.timestamp)).toLocaleString('en-US'); %></p><br>
         <% } %>
-        <br></br>
         <h3><b>Winners</b></h3>
         <% giveaway.pickedWinners.forEach(async (e) => { %>
           <% const winners = bot.users.resolve(e) %>
