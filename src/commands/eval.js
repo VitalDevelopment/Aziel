@@ -13,18 +13,19 @@ module.exports = {
         if (!args[0]) return message.reply({ embeds: [errorEmbed] });
         try {
             const evaled = await getCode({ code: args.join(" ") });
-            const code = await clean(eval(evaled), [client.token]);
+            const code = await clean(eval(evaled), [ client.token ]);
             const embed = new EmbedBuilder()
-                .setColor("#39C6F1")
-                .setTitle("<:checkmark:1045963641406640148> Successfully evaluated.")
-                .addFields({ name: "Input", value: `\`\`\`${args.join(" ")}\`\`\`` })
-                .addFields({ name: "Output", value: `\`\`\`js\n${code}\`\`\`` })
-            return message.reply({ embeds: [embed] });
+            .setColor("#39C6F1")
+            .setTitle("<:checkmark:1045963641406640148> Successfully evaluated.")
+            //.addFields({ name: "Input", value: `\`\`\`${args.join(" ")}\`\`\`` })
+            //.addFields({ name: "Output", value: `\`\`\`js\n${code}\`\`\`` })
+            .setDescription(`**Input** \`\`\`${args.join(" ")}\`\`\`\n**Output**\`\`\`js\n${code}\n\`\`\``)
+        return message.reply({ embeds: [embed] });
         } catch (e) {
             const errorEmbed = new EmbedBuilder()
-                .setColor("#39C6F1")
-                .setDescription(`<:xmark:1045967248038309970> There was an error during evaluation.\n\`\`\`js\n${e}\`\`\``)
-            return message.reply({ embeds: [errorEmbed] })
+            .setColor("#39C6F1")
+            .setDescription(`<:xmark:1045967248038309970> There was an error during evaluation.\n\`\`\`js\n${e.stack}\`\`\``)
+        return message.reply({ embeds: [errorEmbed] })
         }
     },
 };
@@ -36,3 +37,5 @@ function isOwner(id) {
         return false;
     }
 }
+
+//The fields are causing an issue for some reason, Idk why.
