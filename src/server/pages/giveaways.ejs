@@ -34,7 +34,8 @@
         <h3>Entrants</h3>
         <% giveaway.entries.forEach(async (e) => { %>
           <% const user = bot.users.cache.get(e) %>
-          <img src="<%= user.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= user.tag %><br>
+          <a href="https://discord.com/users/<%= user.id %>"></a>
+          <img src="<%= user.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= user.tag %></a><br>
           <% }) %>
           <% if (giveaway.entries.length === 0) { %>
             <p>There are no entries for this giveaway.</p>
