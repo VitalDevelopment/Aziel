@@ -13,6 +13,7 @@ module.exports = {
       return interaction.reply({ content: "You have been **blacklisted** from using **Aziel**.\nMake an appeal: https://discord.gg/HrWe2BwVbd", ephemeral: true });
     }
 
+    if (global.cooldown.has(interaction.user.id)) return;
         if (!command) {
             console.error(`No command matching ${interaction.commandName} was found.`);
             return await interaction.reply({ content: `No command matching ${interaction.commandName} was found.`, ephemeral: true });
@@ -25,6 +26,10 @@ module.exports = {
             await guild.save();
             }
             await command.execute(interaction, client);
+            global.cooldown.add(interaction.user.id);
+            setTimeout(() => {
+              global.cooldown.delete(interaction.user.id)
+            }, 3000)
         } catch (error) {
             console.error(error);
             const errorEmbed = new EmbedBuilder()
