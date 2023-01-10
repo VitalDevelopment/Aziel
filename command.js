@@ -17,7 +17,7 @@ const rest = new REST({ version: '10' }).setToken(config.bot.token);
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
 		const data = await rest.put(
-			Routes.applicationCommands("829896567963910164"),
+			Routes.applicationCommands("1056266007787876442"),
 			{ body: commands },
 		).catch(() => {})
 
