@@ -27,7 +27,12 @@ module.exports = {
     }
     console.log(radar)
 
-    const fetchedTopgg = await fetch(`https://top.gg/api/bots/${client.user.id}/check?userId=${user.id}`);
+    const fetchedTopgg = await fetch(`https://top.gg/api/bots/${client.user.id}/check?userId=${user.id}`, {
+      method: 'GET',
+      headers: {
+        "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyOTg5NjU2Nzk2MzkxMDE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjczNzYzNDUzfQ.fT4Xoc5js00w4oIbnhZLmM4Vnv9OmDhpuATMbNCfufY"
+      },
+    });
     const topgg = await fetchedTopgg.json();
     if (topgg.voted === 0) {
       topgg.voted = `No`
@@ -56,6 +61,11 @@ module.exports = {
      .addFields({ name: `Top.gg`, value: `Voted: **${topgg.voted}**`, inline: true })
      const row = new ActionRowBuilder()
      .addComponents(
+      new ButtonBuilder()
+         .setURL(`https://top.gg/bot/${client.user.id}/vote`)
+         .setLabel("Top.gg")
+         .setEmoji("1064064348424781894")
+         .setStyle(ButtonStyle.Link),
        new ButtonBuilder()
          .setURL(`https://vitallist.xyz/bots/${client.user.id}/vote`)
          .setLabel("VitalList")
@@ -70,11 +80,6 @@ module.exports = {
          .setURL(`https://radarcord.net/bot/${client.user.id}/vote`)
          .setLabel("Radarcord")
          .setEmoji("1064061619287625808")
-         .setStyle(ButtonStyle.Link),
-         new ButtonBuilder()
-         .setURL(`https://top.gg/bot/${client.user.id}/vote`)
-         .setLabel("Top.gg")
-         .setEmoji("1064064348424781894")
          .setStyle(ButtonStyle.Link)
      )
      message.reply({ embeds: [embed], components: [row] })
