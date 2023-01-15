@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require('discord.js')
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const vitallist = require('vitallist.js');
 const { Client } = require("vcodes.js");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
