@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require('discord.js')
 const vitallist = require('vitallist.js');
 const { Client } = require("vcodes.js");
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const vClient = new Client("eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Zjb2Rlcy54eXoiLCJkYXRhIjp7ImlkIjoiODI5ODk2NTY3OTYzOTEwMTY0In0sImV4cCI6MTY3MjQ0MDk4MH0.aEToOFFsAO3u2Wj-ATbZXFrtn4wnafoKaRYimFCkFus")
 module.exports = {
   name: "vote",
@@ -17,6 +18,14 @@ module.exports = {
     } if (vl.voted === true) {
         vl.voted = `Yes`
     }
+    const radar = await fetch(`https://radarcord.net/api/hasvoted/${user.id}/${client.user.id}`);
+    if (radar.voted === 0) {
+      radar.voted = `No, [Vote Here](https://radarcord.ney/bot/${client.user.id}/vote)`
+    } if (radar.voted === 1) {
+      radar.voted = `Yes`
+    }
+    console.log(radar
+      )
     var vC = await vClient.checkVote(user.id);
     if (vC === false) {
       vC = `No, [Vote Here](https://vcodes.xyz/bot/${client.user.id}/vote)`
@@ -34,6 +43,7 @@ module.exports = {
      .setThumbnail(client.user.displayAvatarURL())
      .addFields({ name: `VitalList`, value: `Voted: **${vl.voted}**`, inline: true })
      .addFields({ name: `vCodes`, value: `Voted: **${vC}**`, inline: true })
+     .addFields({ name: `Radarcord`, value: `Voted: **${radar.voted}**`, inline: true })
      message.reply({ embeds: [embed] })
     } catch (err) {
       console.error(err);
