@@ -25,8 +25,16 @@ module.exports = {
     } if (radar.voted === 1) {
       radar.voted = `Yes`
     }
-    console.log(radar
-      )
+    console.log(radar)
+
+    const fetchedTopgg = await fetch(`https://top.gg/api/bots/${client.user.id}/check?userId=${user.id}`);
+    const topgg = await fetchedTopgg.json();
+    if (topgg.voted === 0) {
+      topgg.voted = `No`
+    } if (topgg.voted === 1) {
+      topgg.voted = `Yes`
+    }
+    console.log(topgg)
     var vC = await vClient.checkVote(user.id);
     if (vC === false) {
       vC = `No`
@@ -45,6 +53,7 @@ module.exports = {
      .addFields({ name: `VitalList`, value: `Voted: **${vl.voted}**`, inline: true })
      .addFields({ name: `vCodes`, value: `Voted: **${vC}**`, inline: true })
      .addFields({ name: `Radarcord`, value: `Voted: **${radar.voted}**`, inline: true })
+     .addFields({ name: `Top.gg`, value: `Voted: **${topgg.voted}**`, inline: true })
      const row = new ActionRowBuilder()
      .addComponents(
        new ButtonBuilder()
@@ -61,6 +70,11 @@ module.exports = {
          .setURL(`https://radarcord.net/bot/${client.user.id}/vote`)
          .setLabel("Radarcord")
          .setEmoji("1064061619287625808")
+         .setStyle(ButtonStyle.Link),
+         new ButtonBuilder()
+         .setURL(`https://top.gg/bot/${client.user.id}/vote`)
+         .setLabel("Top.gg")
+         .setEmoji("1064064348424781894")
          .setStyle(ButtonStyle.Link)
      )
      message.reply({ embeds: [embed], components: [row] })
