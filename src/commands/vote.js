@@ -18,7 +18,8 @@ module.exports = {
     } if (vl.voted === true) {
         vl.voted = `Yes`
     }
-    const radar = await fetch(`https://radarcord.net/api/hasvoted/${user.id}/${client.user.id}`);
+    const fetchedRadar = await fetch(`https://radarcord.net/api/hasvoted/${user.id}/${client.user.id}`);
+    const radar = await fetchedRadar.json();
     if (radar.voted === 0) {
       radar.voted = `No, [Vote Here](https://radarcord.ney/bot/${client.user.id}/vote)`
     } if (radar.voted === 1) {
