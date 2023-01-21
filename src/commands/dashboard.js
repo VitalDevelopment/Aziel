@@ -13,7 +13,7 @@ module.exports = {
       const embed = new EmbedBuilder()
         .setColor("#39C6F1")
         .setTitle("Server Dashboard")
-        .setDescription("Here's some info on you server, as well as the link for your dashboard.")
+        .setDescription("Here's some info on your server, as well as the link for your dashboard.")
         .addFields({ name: "Members", value: `${message.guild.memberCount}`, inline: true })
         .addFields({ name: "Commands Ran", value: `${data.commandsRan}`, inline: true })
         .setFooter({

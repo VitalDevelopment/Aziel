@@ -52,6 +52,26 @@ let app = mongoose.Schema({
   userAlerts: {
     type: String,
     required: false,
+  },
+  countingChannel: {
+    type: String,
+    required: false,
+  },
+  countingEnabled: {
+    type: Boolean,
+    default: false,
+  },
+  countingStats: {
+    type: Object,
+    required: false
+  },
+  countingNumber: {
+    type: Number,
+    required: false
+  },
+  countingMember: {
+    type: String,
+    required: false
   }
 });
 module.exports = mongoose.model("guilds", app);

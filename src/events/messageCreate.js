@@ -10,6 +10,31 @@ module.exports = {
       return global.guildModel.create({ id: message.guild.id, name: message.guild.name, icon: message.guild.iconURL({ dynamic: true }) ?? 'https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png' })
     }
     let prefix = data.prefix ?? global.config.bot.prefix;
+    if (global.cooldown.has(message.author.id)) return;
+
+     if (message.channel.id === data.countingChannel) {
+      if (!data.countingEnabled) return;
+       if (message.author === client.user) return;
+        if (message.author.bot) return message.delete();
+         if (data.countingMember === message.author.id) {
+          message.delete();
+            message.channel.send(`${message.author}, it's not your turn, please let someone else go next!`).then(msg => {
+            setTimeout(() => msg.delete(), 5000)
+          })
+          return;
+         }
+          if (message.content == data.countingNumber + 1) {
+            data.countingNumber = data.countingNumber + 1;
+            data.countingMember = message.author.id;
+            await data.save();
+          } else {
+           message.delete();
+           return message.channel.send(`${message.author}, that was the wrong number!\nPlease continue with the correct number: **${data.countingNumber + 1}**`).then(msg => {
+            setTimeout(() => msg.delete(), 5000)
+          })
+
+        }
+     }
 
     const pingEmbed = new EmbedBuilder()
       .setTitle(`:wave: Heyo, I'm ${client.user.username}!`)
@@ -22,7 +47,6 @@ module.exports = {
     if (message.author.bot || !message.guild) return;
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-    if (global.cooldown.has(message.author.id)) return;
 
     let args = message.content.split(" ");
     let command = args.shift().slice(prefix.length).toLowerCase();

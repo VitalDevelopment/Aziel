@@ -1,5 +1,6 @@
 //-Packages & Config-//
 const { Client, GatewayIntentBits } = require('discord.js');
+const Revolt = require("revolt.js");
 const config = require("../config.js");
 global.config = config;
 
@@ -13,7 +14,7 @@ global.alertModel = require("./models/alert.js")
 global.blacklistModel = require("./models/blacklist.js");
 global.giveawayModel = require("./models/giveaway.js");
 
-//-Discord Clients-//
+//-Discord Client-//
 const client = new Client({
     allowedMentions: {
         parse: ["users", "roles"], repliedUser: false
@@ -25,3 +26,6 @@ const client = new Client({
 client.login(config.bot.token)
 global.client = client;
 require("./client.js")
+
+//-Revolt Client-//
+require("./revolt/index.js")

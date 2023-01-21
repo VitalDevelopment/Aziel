@@ -12,5 +12,9 @@ module.exports = {
     redirect: "http://localhost/auth/callback",
     secret: process.env.secret,
     token: process.env.token
+  },
+  revolt: {
+    prefix: "a!",
+    token: process.env.revoltToken
   }
 }
