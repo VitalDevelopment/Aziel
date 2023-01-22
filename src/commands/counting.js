@@ -75,6 +75,16 @@ module.exports = {
                  await message.reply({ embeds: [errorEmbed] });
                }
        }
+    } else {
+        const embed = new EmbedBuilder()
+                   .setColor("#39C6F1")
+                   .setTitle("Counting System")
+                   .setDescription(`Set counting channel -> \`counting channel <channel>\`\nToggle counting on/off -> \`counting toggle\``)
+                   .setFooter({
+                    text: `${client.user.username} - Counting System`,
+                    iconURL: client.user.displayAvatarURL(),
+                  });
+                 await message.reply({ embeds: [embed] });
     }
   },
 };
