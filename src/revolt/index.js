@@ -12,8 +12,7 @@ client.on("ready", async () => {
       });
 });
 client.on("message", async (message) => {
-    if (message.author.bot) return;
-    if (!message.member) return;
+    if (message.author.bot || !message.member) return;
 
     if (message.content === config.revolt.prefix+"ping") {
         try {
