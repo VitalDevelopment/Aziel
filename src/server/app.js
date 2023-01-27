@@ -35,8 +35,8 @@ app.use((req, res, next) => {
   next();
 });
 app.set('view engine', 'ejs');
-app.set('views', './src/server/pages');
-app.use(express.static("./src/server/pages/static"))
+app.set('views', path.join(__dirname, "/pages"));
+app.use(express.static(path.join(__dirname, "pages/static")))
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://azielbot.xyz");
