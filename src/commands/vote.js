@@ -76,11 +76,11 @@ module.exports = {
          .setLabel("vCodes")
          .setEmoji("1064062017129951262")
          .setStyle(ButtonStyle.Link),
-         new ButtonBuilder()
+         /*new ButtonBuilder()
          .setURL(`https://radarcord.net/bot/${client.user.id}/vote`)
          .setLabel("Radarcord")
          .setEmoji("1064061619287625808")
-         .setStyle(ButtonStyle.Link)
+         .setStyle(ButtonStyle.Link)*/
      )
      message.reply({ embeds: [embed], components: [row] })
     } catch (err) {
