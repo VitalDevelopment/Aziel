@@ -27,6 +27,10 @@ module.exports = {
             data.countingNumber = data.countingNumber + 1;
             data.countingMember = message.author.id;
             await data.save();
+            global.cooldown.add(message.author.id);
+            setTimeout(() => {
+              global.cooldown.delete(message.author.id)
+            }, 3000)
           } else {
            message.delete();
            return message.channel.send(`${message.author}, that was the wrong number!\nPlease continue with the correct number: **${data.countingNumber + 1}**`).then(msg => {
@@ -54,7 +58,6 @@ module.exports = {
     if (!cmd) return;
     let checkBlacklist = await global.blacklistModel.findOne({ userid: message.author.id });
     if (checkBlacklist) {
-      message.author.send("You have been **blacklisted** from using **Aziel**.\nMake an appeal: https://discord.gg/HrWe2BwVbd").catch(() => {});
       return message.react("❌")
     }
     try {

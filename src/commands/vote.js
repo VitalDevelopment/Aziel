@@ -18,14 +18,14 @@ module.exports = {
     } if (vl.voted === true) {
         vl.voted = `Yes`
     }
-    const fetchedRadar = await fetch(`https://radarcord.net/api/hasvoted/${user.id}/${client.user.id}`);
+    /*const fetchedRadar = await fetch(`https://radarcord.net/api/hasvoted/${user.id}/${client.user.id}`);
     const radar = await fetchedRadar.json();
     if (radar.voted === 0) {
       radar.voted = `No`
     } if (radar.voted === 1) {
       radar.voted = `Yes`
     }
-    console.log(radar)
+    console.log(radar)*/
 
     const fetchedTopgg = await fetch(`https://top.gg/api/bots/${client.user.id}/check?userId=${user.id}`, {
       method: 'GET',
