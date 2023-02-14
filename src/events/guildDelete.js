@@ -10,8 +10,9 @@ module.exports = {
     name: Events.GuildDelete,
     once: false,
     async execute(guild, client) {
+        /*
         const owner = await client.users.fetch(guild.ownerId);
-/*        const embed = new EmbedBuilder()
+        const embed = new EmbedBuilder()
             .setTitle("Removed Guild")
             .setColor("39C6F1")
             .setDescription(`${guild.name} has removed me, I'm now in ${client.guilds.cache.size} guilds.`)
