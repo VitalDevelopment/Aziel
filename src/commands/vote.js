@@ -57,7 +57,7 @@ module.exports = {
      .setThumbnail(client.user.displayAvatarURL())
      .addFields({ name: `VitalList`, value: `Voted: **${vl.voted}**`, inline: true })
      .addFields({ name: `vCodes`, value: `Voted: **${vC}**`, inline: true })
-     .addFields({ name: `Radarcord`, value: `Voted: **${radar.voted}**`, inline: true })
+     //.addFields({ name: `Radarcord`, value: `Voted: **${radar.voted}**`, inline: true })
      .addFields({ name: `Top.gg`, value: `Voted: **${topgg.voted}**`, inline: true })
      const row = new ActionRowBuilder()
      .addComponents(
@@ -87,7 +87,7 @@ module.exports = {
       console.error(err);
       const errorEmbed = new EmbedBuilder()
         .setColor("#39C6F1")
-        .setDescription(`<:xmark:1045967248038309970> There was an error while executing this command! \n\`\`\`js\n${err}\`\`\``)
+        .setDescription(`<:xmark:1045967248038309970> There was an error while executing this command! \n\`\`\`js\n${err.stack}\`\`\``)
       await message.reply({ embeds: [errorEmbed] });
     }
   },

@@ -88,7 +88,7 @@ module.exports = {
       console.error(error);
       const errorEmbed = new EmbedBuilder()
         .setColor("#39C6F1")
-        .setDescription(`<:xmark:1045967248038309970> There was an error while executing this command! \n\`\`\`js\n${error}\`\`\``)
+        .setDescription(`<:xmark:1045967248038309970> There was an error while executing this command! \n\`\`\`js\n${error.stack}\`\`\``)
       await message.reply({ embeds: [errorEmbed] });
     }
   } catch {};
