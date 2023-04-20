@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const vitallist = require('vitallist.js');
-const { Client } = require("vcodes.js");
+//const { Client } = require("vcodes.js");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const vClient = new Client("eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Zjb2Rlcy54eXoiLCJkYXRhIjp7ImlkIjoiODI5ODk2NTY3OTYzOTEwMTY0In0sImV4cCI6MTY3MjQ0MDk4MH0.aEToOFFsAO3u2Wj-ATbZXFrtn4wnafoKaRYimFCkFus")
+//const vClient = new Client("eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Zjb2Rlcy54eXoiLCJkYXRhIjp7ImlkIjoiODI5ODk2NTY3OTYzOTEwMTY0In0sImV4cCI6MTY3MjQ0MDk4MH0.aEToOFFsAO3u2Wj-ATbZXFrtn4wnafoKaRYimFCkFus")
 module.exports = {
   name: "vote",
   category: "Info",
@@ -40,12 +40,12 @@ module.exports = {
       topgg.voted = `Yes`
     }
     console.log(topgg)
-    var vC = await vClient.checkVote(user.id);
-    if (vC === false) {
-      vC = `No`
-    } if (vC === true) {
-      vC = `Yes`
-    }
+    //var vC = await vClient.checkVote(user.id);
+    //if (vC === false) {
+    //  vC = `No`
+    //} if (vC === true) {
+    //  vC = `Yes`
+    //}
     let has = "Has";
     if (user === message.author) has = "Have";
     if (user === message.author) user.username = "you";
@@ -56,7 +56,7 @@ module.exports = {
      .setDescription(`These are all of the botlists you can vote for ${client.user.username} on.`)
      .setThumbnail(client.user.displayAvatarURL())
      .addFields({ name: `VitalList`, value: `Voted: **${vl.voted}**`, inline: true })
-     .addFields({ name: `vCodes`, value: `Voted: **${vC}**`, inline: true })
+     //.addFields({ name: `vCodes`, value: `Voted: **${vC}**`, inline: true })
      //.addFields({ name: `Radarcord`, value: `Voted: **${radar.voted}**`, inline: true })
      .addFields({ name: `Top.gg`, value: `Voted: **${topgg.voted}**`, inline: true })
      const row = new ActionRowBuilder()
