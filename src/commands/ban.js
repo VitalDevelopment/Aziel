@@ -17,26 +17,25 @@ module.exports = {
     const reason = args.splice(1).join(" ");
     const errorEmbed = new EmbedBuilder()
       .setColor("#39C6F1")
-      .setDescription("**<:xmark:1045967248038309970> You must provide a user for me to ban.**")
+      .setDescription("<:xmark:1045967248038309970> You must provide a user for me to ban.")
     if (!user) return message.reply({ embeds: [errorEmbed] })
     const error2Embed = new EmbedBuilder()
       .setColor("#39C6F1")
-      .setDescription("**<:xmark:1045967248038309970> You must provide a reason for me to ban them.**")
-    if (!reason) return message.reply({ embeds: [error2Embed] })
+      .setDescription("<:xmark:1045967248038309970> You must provide a reason for me to ban them.")
     const member = guild.members.cache.get(user.id);
 
     try {
       if (message.channel.permissionsFor(message.guild.members.cache.get(client.user.id)).has(PermissionsBitField.Flags.BanMembers)) {
         const errorEmbed = new EmbedBuilder()
           .setColor("#39C6F1")
-          .setDescription("**<:xmark:1045967248038309970> My roles are too low to ban this member.**")
+          .setDescription("<:xmark:1045967248038309970> My roles are too low to ban this member.")
         if (!member.bannable) return message.reply({ embeds: [errorEmbed] });
-        await member.ban({ reason: `${reason} -> Excuted by ${message.author.tag}.` });
+        await member.ban({ reason: `${reason ?? "No Reason Provided"} -> Excuted by ${message.author.tag}.` });
         const embed = new EmbedBuilder()
           .setColor("#39C6F1")
           .setTitle("<:checkmark:1045963641406640148> Successfully banned")
           .setDescription(`I have successfully banned **${user.tag}**.`)
-          .addFields({ name: "Reason", value: reason, inline: true })
+          .addFields({ name: "Reason", value: reason ?? "No Reason Provided", inline: true })
           .addFields({ name: "Executor", value: `${message.author}`, inline: true })
           .setFooter({ text: `${client.user.username} - Ban Command`, iconURL: client.user.displayAvatarURL() })
         return message.reply({ embeds: [embed] });

@@ -10,7 +10,6 @@ module.exports = {
       return global.guildModel.create({ id: message.guild.id, name: message.guild.name, icon: message.guild.iconURL({ dynamic: true }) ?? 'https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png' })
     }
     let prefix = data.prefix ?? global.config.bot.prefix;
-    if (global.cooldown.has(message.author.id)) return message.reply(`:warning: Woah slow down there, try again in 3 seconds.`);
 
      if (message.channel.id === data.countingChannel) {
       if (!data.countingEnabled) return;
@@ -50,7 +49,7 @@ module.exports = {
     }
     if (message.author.bot || !message.guild) return;
     if (!message.content.toLowerCase().startsWith(prefix)) return;
-
+    if (global.cooldown.has(message.author.id)) return message.reply(`:warning: Woah slow down there, try again in 3 seconds.`);
 
     let args = message.content.split(" ");
     let command = args.shift().slice(prefix.length).toLowerCase();
