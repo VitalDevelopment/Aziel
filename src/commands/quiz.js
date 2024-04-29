@@ -25,9 +25,9 @@ module.exports = {
                   .then(collected => {
                     message.channel.send(`${collected.first().author} got it right! \nThe correct answers were \`${item.answers.join(", ")}\`.`);
               })
-        .catch(collected => {
-            message.channel.send('Looks like nobody got the answer this time.');
-            });
+               .catch(() => {
+                  message.channel.send('Looks like nobody got the answer this time. \nThe correct answers were \`${item.answers.join(", ")}\`.');
+             })
         });
     } catch (err) {
       console.error(err);

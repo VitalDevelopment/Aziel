@@ -1,5 +1,6 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 module.exports = {
   name: "vote",
   category: "Info",
@@ -9,6 +10,7 @@ module.exports = {
     try {
     let user = message.mentions.users.first() || client.users.cache.get(args[0]);
     if (!user) user = message.author;
+    
     /*const fetchedRadar = await fetch(`https://radarcord.net/api/hasvoted/${user.id}/${client.user.id}`);
     const radar = await fetchedRadar.json();
     if (radar.voted === 0) {
@@ -21,7 +23,7 @@ module.exports = {
     const fetchedTopgg = await fetch(`https://top.gg/api/bots/${client.user.id}/check?userId=${user.id}`, {
       method: 'GET',
       headers: {
-        "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyOTg5NjU2Nzk2MzkxMDE2NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjczNzYzNDUzfQ.fT4Xoc5js00w4oIbnhZLmM4Vnv9OmDhpuATMbNCfufY"
+        "Authorization": config.bot.topgg_key
       },
     });
     const topgg = await fetchedTopgg.json();
@@ -29,6 +31,19 @@ module.exports = {
       topgg.voted = `No`
     } if (topgg.voted === 1) {
       topgg.voted = `Yes`
+    }
+
+    const fetcheVoidBots = await fetch(`https://api.voidbots.net/bot/voted/${client.user.id}/${user.id}`, {
+      method: 'GET',
+      headers: {
+        "Authorization": config.bot.vb_key
+      },
+    });
+    const voidbots = await fetcheVoidBots.json();
+    if (voidbots.voted === false) {
+      voidbots.voted = `No`
+    } if (voidbots.voted === true) {
+      voidbots.voted = `Yes`
     }
 
     let has = "Has";
@@ -40,7 +55,7 @@ module.exports = {
      .setTitle(`${has} ${user.username} voted yet?`)
      .setDescription(`These are all of the botlists you can vote for ${client.user.username} on.`)
      .setThumbnail(client.user.displayAvatarURL())
-     //.addFields({ name: `vCodes`, value: `Voted: **${vC}**`, inline: true })
+     .addFields({ name: `VoidBots`, value: `Voted: **${voidbots.voted}**`, inline: true })
      //.addFields({ name: `Radarcord`, value: `Voted: **${radar.voted}**`, inline: true })
      .addFields({ name: `Top.gg`, value: `Voted: **${topgg.voted}**`, inline: true })
      const row = new ActionRowBuilder()

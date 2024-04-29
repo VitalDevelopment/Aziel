@@ -45,6 +45,8 @@
     "twemoji-parser": "^14.0.0",
     "valorant-api-client": "^0.0.1",
     "vitallist.js": "^1.5.0",
+    "voidbots": "^2.6.3",
+    "voidbots.api": "^0.0.3",
     "xmlhttp-request": "^0.4.1"
   }
 }

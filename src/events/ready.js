@@ -4,7 +4,7 @@ const Statcord = require("statcord.js");
 
 const statcord = new Statcord.Client({
     client,
-    key: "statcord.com-hOFCq1NEFblqjepuLx25",
+    key: config.sc_key,
     postCpuStatistics: true, 
     postMemStatistics: true,
     postNetworkStatistics: true,

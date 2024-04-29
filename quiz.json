@@ -1,22 +1,228 @@
 [
-	{
-		"question": "What color is the sky?",
-		"answers": ["blue"]
-	},
-	{
-		"question": "How many letters are there in the alphabet?",
-		"answers": ["26", "twenty-six", "twenty six", "twentysix"]
-	},
     {
-        "question": "What is the world’s smallest bird?",
-        "answers": ["Bee Hummingbird", "bee hummingbird", "beehummingbird"]
+      "question": "What color is the sky?",
+      "answers": [
+        "blue"
+      ]
     },
     {
-       "question": "The atmosphere is held to the earth by _?",
-       "answers": ["Gravity", "gravity"] 
+      "question": "How many letters are there in the alphabet?",
+      "answers": [
+        "26",
+        "twenty-six",
+        "twenty six",
+        "twentysix"
+      ]
     },
     {
-        "question": "When was the war of 1812?",
-        "answers": ["1812", "Eighteen Twelve", "eighteen twelve", "eighteen-twelve"]
+      "question": "What is the world’s smallest bird?",
+      "answers": [
+        "bee hummingbird",
+        "bee humming bird",
+        "beehummingbird"
+      ]
+    },
+    {
+      "question": "The atmosphere is held to the earth by _?",
+      "answers": [
+        "gravity"
+      ]
+    },
+    {
+      "question": "When was the war of 1812?",
+      "answers": [
+        "1812",
+        "eighteen twelve",
+        "eighteen-twelve"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for water?",
+      "answers": [
+        "h2o"
+      ]
+    },
+    {
+      "question": "Who wrote 'To Kill a Mockingbird'?",
+      "answers": [
+        "harper lee"
+      ]
+    },
+    {
+      "question": "What is the largest planet in our solar system?",
+      "answers": [
+        "jupiter"
+      ]
+    },
+    {
+      "question": "What is the capital of France?",
+      "answers": [
+        "paris"
+      ]
+    },
+    {
+      "question": "Who painted the Mona Lisa?",
+      "answers": [
+        "leonardo da vinci",
+        "da vinci"
+      ]
+    },
+    {
+      "question": "What is the tallest mammal in the world?",
+      "answers": [
+        "giraffe"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for gold?",
+      "answers": [
+        "au"
+      ]
+    },
+    {
+      "question": "What is the hardest natural substance on Earth?",
+      "answers": [
+        "diamond"
+      ]
+    },
+    {
+      "question": "Who wrote '1984'?",
+      "answers": [
+        "george orwell",
+        "orwell"
+      ]
+    },
+    {
+      "question": "What is the main ingredient in guacamole?",
+      "answers": [
+        "avocado"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for oxygen?",
+      "answers": [
+        "o2"
+      ]
+    },
+    {
+      "question": "Who wrote 'Pride and Prejudice'?",
+      "answers": [
+        "jane austen",
+        "austen"
+      ]
+    },
+    {
+      "question": "What is the closest planet to the Sun?",
+      "answers": [
+        "mercury"
+      ]
+    },
+    {
+      "question": "What is the capital of Japan?",
+      "answers": [
+        "tokyo"
+      ]
+    },
+    {
+      "question": "Who painted 'Starry Night'?",
+      "answers": [
+        "vincent van gogh",
+        "van gogh"
+      ]
+    },
+    {
+      "question": "What is the fastest land animal?",
+      "answers": [
+        "cheetah"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for carbon?",
+      "answers": [
+        "c"
+      ]
+    },
+    {
+      "question": "What is the tallest mountain in the world?",
+      "answers": [
+        "mount everest",
+        "everest"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Great Gatsby'?",
+      "answers": [
+        "f. scott fitzgerald",
+        "fitzgerald"
+      ]
+    },
+    {
+      "question": "What is the main ingredient in pizza sauce?",
+      "answers": [
+        "tomato"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for sodium?",
+      "answers": [
+        "na"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Catcher in the Rye'?",
+      "answers": [
+        "j.d. salinger",
+        "salinger"
+      ]
+    },
+    {
+      "question": "What is the largest ocean on Earth?",
+      "answers": [
+        "pacific"
+      ]
+    },
+    {
+      "question": "What is the capital of Australia?",
+      "answers": [
+        "canberra"
+      ]
+    },
+    {
+      "question": "Who painted 'The Persistence of Memory'?",
+      "answers": [
+        "salvador dali",
+        "dali"
+      ]
+    },
+    {
+      "question": "What is the only mammal capable of sustained flight?",
+      "answers": [
+        "bat"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for iron?",
+      "answers": [
+        "fe"
+      ]
+    },
+    {
+      "question": "What is the largest desert in the world?",
+      "answers": [
+        "antarctica"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Lord of the Rings' trilogy?",
+      "answers": [
+        "j.r.r. tolkien",
+        "tolkien"
+      ]
+    },
+    {
+      "question": "What is the main ingredient in chocolate?",
+      "answers": [
+        "cocoa"
+      ]
     }
 ]
