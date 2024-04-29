@@ -71,7 +71,7 @@ module.exports = {
                 .setStyle('Success'),
                 new ButtonBuilder()
                 .setLabel('Entries')
-                .setURL(`https://azielbot.xyz/giveaways/${msg.id}`)
+                .setURL(`https://aziel.vitaldevs.org/giveaways/${msg.id}`)
                 .setStyle(ButtonStyle.Link)
         );
            await msg.edit({ embeds: [giveawayEmbed], components: [buttons], content: " "}).catch(async (err) => {

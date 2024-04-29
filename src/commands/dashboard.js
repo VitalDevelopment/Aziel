@@ -23,7 +23,7 @@ module.exports = {
         const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
-          .setURL(`https://azielbot.xyz/dashboard/${message.guild.id}`)
+          .setURL(`https://aziel.vitaldevs.org/dashboard/${message.guild.id}`)
           .setLabel("Dashboard")
           .setStyle(ButtonStyle.Link)
       )

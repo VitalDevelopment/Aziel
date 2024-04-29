@@ -16,7 +16,7 @@ module.exports = {
       const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
-          .setURL(`https://azielbot.xyz`)
+          .setURL(`https://aziel.vitaldevs.org`)
           .setLabel("Website")
           .setStyle(ButtonStyle.Link)
       )

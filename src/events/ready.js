@@ -15,7 +15,7 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.info(`${client.user.tag} is online and ready.`)
-		client.user.setActivity(`azielbot.xyz | ${client.guilds.cache.size} guilds.`, { type: ActivityType.Watching })
+		client.user.setActivity(`aziel.vitaldevs.org | ${client.guilds.cache.size} guilds.`, { type: ActivityType.Watching })
 		statcord.autopost();
 		//-Checking Giveawy ends-//
 		setInterval(async () => {
@@ -62,7 +62,7 @@ module.exports = {
 		.addComponents(
 		  new ButtonBuilder()
 			.setLabel('Summary')
-			.setURL(`https://azielbot.xyz/giveaways/${db.messageid}`)
+			.setURL(`https://aziel.vitaldevs.org/giveaways/${db.messageid}`)
 			.setStyle(ButtonStyle.Link),
 		);
 

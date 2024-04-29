@@ -36,7 +36,7 @@ module.exports = {
             embeds: [embed]
         }); */
 
-        client.user.setActivity(`azielbot.xyz | ${client.guilds.cache.size} guilds.`, {
+        client.user.setActivity(`aziel.vitaldevs.org | ${client.guilds.cache.size} guilds.`, {
             type: ActivityType.Watching
         })
 

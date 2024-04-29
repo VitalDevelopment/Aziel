@@ -43,7 +43,7 @@ module.exports = {
     if (interaction.options.getSubcommand() === 'bruh') {
 
 		const player = voiceDiscord.createAudioPlayer();
-		const resource = voiceDiscord.createAudioResource('https://azielbot.xyz/assets/bruh.mp3');
+		const resource = voiceDiscord.createAudioResource('https://aziel.vitaldevs.org/assets/bruh.mp3');
 
 		const connection = voiceDiscord.joinVoiceChannel({
 			channelId: channel.id,
