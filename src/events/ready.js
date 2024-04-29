@@ -1,7 +1,7 @@
 const { Events, ActivityType, EmbedBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder } = require('discord.js');
 const client = global.client;
-const vitallist = require('vitallist.js');
 const Statcord = require("statcord.js");
+
 const statcord = new Statcord.Client({
     client,
     key: "statcord.com-hOFCq1NEFblqjepuLx25",

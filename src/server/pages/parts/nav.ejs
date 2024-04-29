@@ -23,7 +23,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if (user) { %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle pl-3 pr-3 mr-3 btn btn-primary" style="border-radius: 8px;margin-top:4px;background-color: transparent;border-color: transparent;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="right" draggable="false" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png?" width="35" height="35" style="border-radius:100%;" />&nbsp;&nbsp;<%= user.username %>#<%= user.discriminator %></a>
+          <a class="nav-link dropdown-toggle pl-3 pr-3 mr-3 btn btn-primary" style="border-radius: 8px;margin-top:4px;background-color: transparent;border-color: transparent;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img class="right" draggable="false" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.webp?" width="35" height="35" style="border-radius:100%;" />&nbsp;&nbsp;<%= user.username %></a>
           <div class="dropdown-menu" style="background-color: #2e323d;border-radius: 8px">
             <a class="dropdown-item" style="color: white;" href="/dashboard"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Dashboard</a>
             <a class="dropdown-item" style="color: white;" href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</a>

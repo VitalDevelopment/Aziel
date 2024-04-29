@@ -4,7 +4,6 @@ const {
     EmbedBuilder
 } = require('discord.js');
 const model = global.guildModel;
-const vitallist = require("vitallist.js")
 
 module.exports = {
     name: Events.GuildDelete,
@@ -37,7 +36,6 @@ module.exports = {
             embeds: [embed]
         }); */
 
-        vitallist.postStats(client, global.config.vlAPIKEY)
         client.user.setActivity(`azielbot.xyz | ${client.guilds.cache.size} guilds.`, {
             type: ActivityType.Watching
         })

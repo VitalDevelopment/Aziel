@@ -6,7 +6,6 @@ const fs = require('node:fs');
 const path = require('node:path')
 const cooldown = new Set();
 global.cooldown = cooldown;
-const config = global.config;
 const client = global.client;
 
 //-Events-//

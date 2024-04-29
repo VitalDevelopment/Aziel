@@ -12,10 +12,11 @@ const session = require("express-session"),
 
 //-MongoDB Login-//
 try {
-mongoose.connect(config.mongo)
-.then(console.info("Mongoose Connected"))
+  mongoose.set('strictQuery', false);
+  mongoose.connect(config.mongo)
+   .then(console.info("Mongoose Connected"))
 } catch(err) {
-console.error(err)
+  console.error(err)
 }
 
 //-Webserver-//
@@ -32,7 +33,7 @@ app.use(
 );
 app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use((req, res, next) => {
-  res.setHeader("X-Frame-Options", "ALLOW-FROM https://vitallist.xyz https://top.gg");
+  res.setHeader("X-Frame-Options", "ALLOW-FROM https://aziel.vitaldevs.org https://top.gg");
   next();
 });
 app.set('view engine', 'ejs');
@@ -40,7 +41,7 @@ app.set('views', path.join(__dirname, "/pages"));
 app.use(express.static(path.join(__dirname, "pages/static")))
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://azielbot.xyz");
+  res.header("Access-Control-Allow-Origin", "https://aziel.vitaldevs.org");
   res.header("Access-Control-Allow-Headers", "*");
   res.header("Access-Control-Allow-Methods", "*");
   if (req.method === "OPTIONS") {

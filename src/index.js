@@ -23,9 +23,7 @@ const client = new Client({
         GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildVoiceStates 
     ]
 })
+
 client.login(config.bot.token)
 global.client = client;
 require("./client.js")
-
-//-Revolt Client-//
-require("./revolt/index.js")

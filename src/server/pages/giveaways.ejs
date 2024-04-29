@@ -9,11 +9,15 @@
         <div id="home">
 <center>
      <h2 style="color:white"><b>Giveaway Summary</b></h2>
-     <p style="color:white">Here's a detailed view on how this giveaway went.</p>
+     <% if (giveaway.status === "active") { %>
+      <p style="color:white">Here's a detailed view on how this giveaway is going.</p>
+    <% } else { %>
+      <p style="color:white">Here's a detailed view on how this giveaway went.</p>
+    <% } %>
     </center>
     <div class="container" style="margin-top:50px;color: white">
       <h3><b>Server</b></h3>
-      <p style="font-size: 20px;"><img src="<%= guild.iconURL %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= guild.name %></p><br>
+      <p style="font-size: 20px;"><img src="<%= guild.iconURL() %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= guild.name %></p><br>
       <h3><b>Host</b></h3>
       <a href="https://discord.com/users/<%= giveaway.host.id %>">
       <p style="font-size: 20px;color: white; text-decoration: none;"> <img src="<%= giveaway.host.displayAvatarURL() %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= giveaway.host.tag %></p>
@@ -38,31 +42,9 @@
           <h3><b>Ends at</b></h3>
         <p><%= new Date(Math.floor(giveaway.time + giveaway.timestamp)).toLocaleString('en-US'); %></p><br>
         <% } else { %>
-          <br></br>
         <h3><b>Ended at</b></h3>
         <p><%= new Date(Math.floor(giveaway.time + giveaway.timestamp)).toLocaleString('en-US'); %></p><br>
         <% } %>
-<<<<<<< HEAD
-        <h3><b>Server</b></h3>
-        <p style="font-size: 20px;"><img src="<%= guild.iconURL %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= guild.name %></p><br>
-        <h3><b>Host</b></h3>
-        <a href="https://discord.com/users/<%= giveaway.host.id %>">
-        <p style="font-size: 20px;color: white; text-decoration: none;"> <img src="<%= giveaway.host.displayAvatarURL() %>" style="border-radius: 50%;height: 50px;width: 50px;"> <%= giveaway.host.tag %></p>
-        </a><br>
-        <h3>Entrants</h3>
-        <% giveaway.entries.forEach(async (e) => { %>
-          <% const user = bot.users.cache.get(e) %>
-          <a href="https://discord.com/users/<%= user.id %>"></a>
-          <img src="<%= user.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= user.tag %></a><br>
-=======
-        <h3><b>Winners</b></h3>
-        <% giveaway.pickedWinners.forEach(async (e) => { %>
-          <% const winners = bot.users.resolve(e) %>
-          <img src="<%= winners.displayAvatarURL() %>" style="border-radius: 50%;height: 25px;width: 25px;"> <%= winners.tag %><br>
->>>>>>> e874d13be7cd188fdce43493ff961cadd98e612d
-          <% }) %>
-       
-       
     </div>
         </div>
       </div>
