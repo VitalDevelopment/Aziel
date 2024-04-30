@@ -224,5 +224,163 @@
       "answers": [
         "cocoa"
       ]
+    },
+    {
+      "question": "What is the chemical symbol for potassium?",
+      "answers": [
+        "k"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Odyssey'?",
+      "answers": [
+        "homer"
+      ]
+    },
+    {
+      "question": "What is the smallest continent?",
+      "answers": [
+        "australia"
+      ]
+    },
+    {
+      "question": "What is the capital of Brazil?",
+      "answers": [
+        "brasilia"
+      ]
+    },
+    {
+      "question": "Who painted 'The Scream'?",
+      "answers": [
+        "edvard munch",
+        "munch"
+      ]
+    },
+    {
+      "question": "What is the largest species of bear?",
+      "answers": [
+        "polar bear"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for silver?",
+      "answers": [
+        "ag"
+      ]
+    },
+    {
+      "question": "What is the tallest tree species in the world?",
+      "answers": [
+        "coast redwood",
+        "redwood"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Hobbit'?",
+      "answers": [
+        "j.r.r. tolkien",
+        "tolkien"
+      ]
+    },
+    {
+      "question": "What is the main ingredient in sushi?",
+      "answers": [
+        "rice"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for calcium?",
+      "answers": [
+        "ca"
+      ]
+    },
+    {
+      "question": "Who wrote 'Moby-Dick'?",
+      "answers": [
+        "herman melville",
+        "melville"
+      ]
+    },
+    {
+      "question": "What is the largest mammal in the world?",
+      "answers": [
+        "blue whale"
+      ]
+    },
+    {
+      "question": "What is the capital of South Africa?",
+      "answers": [
+        "pretoria"
+      ]
+    },
+    {
+      "question": "What is the fastest bird in the world?",
+      "answers": [
+        "peregrine falcon",
+        "falcon"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for nitrogen?",
+      "answers": [
+        "n"
+      ]
+    },
+    {
+      "question": "What is the largest island in the world?",
+      "answers": [
+        "greenland"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Chronicles of Narnia' series?",
+      "answers": [
+        "c.s. lewis",
+        "lewis"
+      ]
+    },
+    {
+      "question": "What is the main ingredient in hummus?",
+      "answers": [
+        "chickpeas"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for helium?",
+      "answers": [
+        "he"
+      ]
+    },
+    {
+      "question": "Who wrote 'War and Peace'?",
+      "answers": [
+        "leo tolstoy",
+        "tolstoy"
+      ]
+    },
+    {
+      "question": "What is the fastest fish in the ocean?",
+      "answers": [
+        "sailfish"
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for carbon dioxide?",
+      "answers": [
+        "co2"
+      ]
+    },
+    {
+      "question": "What is the hottest continent on Earth?",
+      "answers": [
+        "africa"
+      ]
+    },
+    {
+      "question": "Who wrote 'The Hitchhiker's Guide to the Galaxy'?",
+      "answers": [
+        "douglas adams",
+        "adams"
+      ]
     }
-]
+  ]
